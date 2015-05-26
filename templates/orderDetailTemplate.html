@@ -30,7 +30,11 @@
         <div ng-if="operation.end" class="operation__time__result"><strong>Fin:</strong> <time>{{ operation.end | date:dateFormat }}</time></div>
         <button ng-if="!operation.playing" ng-click="startOperation(operation)" class="operation__time__button operation__time__button--play"><i class="fa fa-play"></i></button>
         <button ng-if="operation.playing" ng-click="pauseOperation(operation)" class="operation__time__button operation__time__button--pause"><i class="fa fa-pause"></i></button>
-        <button ng-disabled="operation.playing || !operation.end" ng-click="finishOperation(operation)" class="operation__time__button operation__time__button--finish">Notificación final</i></button>
+        <button ng-disabled="operation.playing || !operation.end"
+                confirmed-click="finishOperation(operation)" ng-confirm-click="¿Seguro que desea notificar esta operación?"
+                class="operation__time__button operation__time__button--finish">Notificación final
+                </i>
+        </button>
       </div>
 
       <div class="operation__details">
