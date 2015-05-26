@@ -1,31 +1,18 @@
 angular.module('recope.orders', [])
-  .controller('OrdersCtrl', function($rootScope, $scope, $state, dataService) {
+  .controller('OrdersCtrl', OrdersCtrl);
 
-    $scope.data   = dataService.data;
-    $scope.$state = $state;
-    $rootScope.$on('appData:update', updateData);
+function OrdersCtrl($rootScope, $state, dataService) {
+  var vm = this;
 
-    // Update application data.
-    function updateData(e, data) {
-      $scope.data = data;
-    }
+  vm.data   = dataService.data;
+  vm.$state = $state;
+  $rootScope.$on('appData:update', updateData);
 
-  });
+  return vm;
 
-// angular.module('recope.orders', [])
-//   .controller('OrdersCtrl', OrdersCtrl);
+  // Update application data.
+  function updateData(e, data) {
+    vm.data = data;
+  }
+}
 
-// function OrdersCtrl($rootScope, $state, dataService) {
-//   var vm = this;
-
-//   vm.data   = dataService.data;
-//   vm.$state = $state;
-//   $rootScope.$on('appData:update', updateData);
-
-//   return vm;
-
-//   // Update application data.
-//   function updateData(e, data) {
-//     vm.data = data;
-//   }
-// }
