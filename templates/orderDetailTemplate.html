@@ -1,29 +1,34 @@
 <div class="l-module-title order__title">Detalle de la orden <a ui-sref="orders" class="order__close fa fa-times-circle"></a></div>
 <div class="l-module-content order__content">
 
-<div class="container">
+<div class="container-fluid">
 
 <div class="row">
 
 
 <div class="col-md-4">
 
-  <h1 class="order__number">Orden {{ data.order }}</h1>
-  <p class="order__description">{{ data.header }}</p>
-
-  <table class="order__details">
-    <tr ng-repeat="detail in data.details">
-      <th>{{ detail.label }}</th>
-      <td>{{ detail.value }}</td>
-    </tr>
-  </table>
-
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1>Orden {{ data.order }}</h1>
+    </div>
+    <div class="panel-body">
+      <p>{{ data.header }}</p>
+      <hr>
+      <table class="order__details">
+        <tr ng-repeat="detail in data.details">
+          <th>{{ detail.label }}</th>
+          <td>{{ detail.value }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
 
 <div class="col-md-4">
 
-  <div class="operation" ng-repeat="operation in data.operations | FilteringStatus" ng-class="{ 'operation--finished': operation.status === 3 }">
-    <div class="operation__title"><h1>{{ operation.title }}</h1></div>
+  <div class="panel panel-default" ng-repeat="operation in data.operations | FilteringStatus" ng-class="{ 'operation--finished': operation.status === 3 }">
+    <div class="panel-heading"><h1>{{ operation.title }}</h1></div>
     <div class="operation__content">
       <div class="operation__time">
         <div ng-if="operation.lastStart" class="operation__time__result"><strong>Inicio:</strong> <time>{{ (operation.start || operation.lastStart) | date:dateFormat }}</time></div>
@@ -51,19 +56,21 @@
 </div>
 </div>
 
-<div class="col-md-4">
-
-  <div class="panel panel-default">
-  <div class="panel-heading">Mediciones</div>
-    <div class="panel-body">
-      <p>Presión de la máquina: {{data.presionmaquina}}</p>
-      <p>Medidor de agua: {{data.medidoragua}}</p>
-      <p>Cilindros por metro cúbico: {{data.medidoragua}}</p>
-      <p>Calibración de presión: {{data.medidoragua}}</p>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h1>Mediciones</h1></div>
+        <div class="panel-body">
+          <table class="table">
+            <tbody>
+              <tr ng-repeat="medicion in data.mediciones">
+                <th>{{medicion.label}}</th>
+                <td>{{medicion.value}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  </div>
-
-</div>
 
 </div>
 </div>

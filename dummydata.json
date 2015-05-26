@@ -1,8 +1,4 @@
 [{
-  "presionmaquina": "5 mb/s",
-  "medidoragua": "7 tons",
-  "cilindroscubico": "7",
-  "calibracionpresion": "45 grados",
   "id": "1",
   "order": "000001",
   "header": "Detalle completo del detalle de cabecera de la orden",
@@ -70,7 +66,7 @@
     "value": "7"
   }, {
     "label": "Calibración de presión",
-    "value": "45 grados"    
+    "value": "45 grados"
   }],
   "operations" : [{
     "title"    : "Operación 170794",
@@ -149,7 +145,7 @@
     "value": "12"
   }, {
     "label": "Calibración de presión",
-    "value": "57 grados"    
+    "value": "57 grados"
   }],
   "operations" : [{
     "title"    : "Operación 4859301",
