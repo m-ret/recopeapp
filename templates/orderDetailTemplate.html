@@ -10,12 +10,12 @@
     </tr>
   </table>
 
-  <div class="operation" ng-repeat="operation in data.operations | byStatus" ng-class="{ 'operation--finished': operation.status === 3 }">
+  <div class="operation" ng-repeat="operation in data.operations | FilteringStatus" ng-class="{ 'operation--finished': operation.status === 3 }">
     <div class="operation__title"><h1>{{ operation.title }}</h1></div>
     <div class="operation__content">
       <div class="operation__time">
-        <div ng-if="operation.lastStart" class="operation__time__result"><strong>Inicio:</strong> <time>{{ (operation.start || operation.lastStart) | date:app.dateFormat }}</time></div>
-        <div ng-if="operation.end" class="operation__time__result"><strong>Fin:</strong> <time>{{ operation.end | date:app.dateFormat }}</time></div>
+        <div ng-if="operation.lastStart" class="operation__time__result"><strong>Inicio:</strong> <time>{{ (operation.start || operation.lastStart) | date:dateFormat }}</time></div>
+        <div ng-if="operation.end" class="operation__time__result"><strong>Fin:</strong> <time>{{ operation.end | date:dateFormat }}</time></div>
         <button ng-if="!operation.playing" ng-click="startOperation(operation)" class="operation__time__button operation__time__button--play"><i class="fa fa-play"></i></button>
         <button ng-if="operation.playing" ng-click="pauseOperation(operation)" class="operation__time__button operation__time__button--pause"><i class="fa fa-pause"></i></button>
         <button ng-disabled="operation.playing || !operation.end" ng-click="finishOperation(operation)" class="operation__time__button operation__time__button--finish">Notificación final</i></button>
@@ -23,8 +23,9 @@
       <div class="operation__details">
         <h2 class="operation__details__title">Detalles</h2>
         <div class="operation__time__result"><strong>Estado:</strong> <span class="text-color-{{ operation.status }}">{{ statuses[operation.status] }}</span></div>
-        <div class="operation__time__result"><strong>Tempo planificado:</strong> {{ toHoursAndMinutes(operation.duration) }}</div>
-        <div ng-if="operation.partialTime" class="operation__time__result"><strong>Tempo parcial:</strong> <span ng-class="{ 'text-color-2' : operation.partialTime > operation.duration }">{{ toHoursAndMinutes(operation.partialTime) }}</span></div>
+        <div class="operation__time__result"><strong>Tempo planificado:</strong> {{ timeFormatter(operation.duration) }}</div>
+        <div ng-if="operation.partialTime" class="operation__time__result"><strong>Tempo parcial:</strong> <span ng-class="{ 'text-color-2' : operation.partialTime > operation.duration }">{{ timeFormatter(operation.partialTime) }}</span></div>
+        <input type="text" placeholder="Detalle">
       </div>
     </div>
   </div>

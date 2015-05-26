@@ -1,0 +1,18 @@
+<div class="orders" ng-class="{ 'orders--collapsed': ordersCtrl.$state.current.name === 'orders.order' }">
+  <div class="l-module-title orders__title">Lista de ordenes</div>
+
+  <div class="l-module-content">
+    <a class="orders__item"
+      ng-repeat="order in ordersCtrl.data"
+      ui-sref="orders.order({ id: order.id })"
+      ui-sref-active="orders__item--active">
+      <div class="orders__item__info">
+        <h4 class="orders__item__title">Orden {{ order.order }} - {{ order.header }}</h4>
+        <p class="orders__item__description">{{ order.group }}</p>
+      </div>
+      <div class="orders__item__chevron"><i class="fa fa-chevron-right"></i></div>
+    </a>
+  </div>
+</div>
+
+<ui-view class="order"></ui-view>

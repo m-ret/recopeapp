@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>RECOPE - Proyecto de Mantenimiento</title>
-  <link rel="stylesheet" href="./assets/vendor/font-awesome.min.css">
-  <link rel="stylesheet" href="./assets/styles/font-lato.css">
-  <link rel="stylesheet" href="./assets/styles/styles.css">
-  <link rel="stylesheet" href="./components/orders/orders.css">
-  <link rel="stylesheet" href="./components/order/order.css">
+  <link rel="stylesheet" href="assets/vendor/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/styles/font-lato.css">
+  <link rel="stylesheet" href="assets/styles/styles.css">
+  <link rel="stylesheet" href="styles/orders.css">
+  <link rel="stylesheet" href="styles/order.css">
 </head>
-<body ng-app="recope" ng-controller="MainCtrl" ng-cloak>
+<body ng-app="RecopeApp" ng-controller="MainCtrl" ng-cloak>
   <div class="l-container">
 
     <!-- Header. -->
@@ -27,8 +27,8 @@
       <hr>
       <em class="fa fa-calendar"></em>
       <h3>Última sincronización</h3>
-      <p><time>{{ appLastUpdate | date:dateFormat }}</time></p>
-      <button ng-disabled="!online" class="sync-button" ng-click="sync()"><span class="fa fa-refresh"></span> Sincronizar</button>
+      <p><time>{{ getLastUpdate | date: dateFormat }}</time></p>
+      <button ng-disabled="!online" class="sync-button" ng-click="syncro()"><span class="fa fa-refresh"></span> Sincronizar</button>
     </div>
 
     <!-- Viewport. -->
@@ -36,18 +36,18 @@
   </div>
 
   <!-- Scripts. -->
-  <script src="./assets/vendor/angular.min.js"></script>
-  <script src="./assets/vendor/angular-animate.js"></script>
-  <script src="./assets/vendor/angular-ui-router.min.js"></script>
-  <script src="./assets/vendor/angular-local-storage.min.js"></script>
-  <script src="./app.js"></script>
-  <script src="./services/dataService.js"></script>
-  <script src="./controllers/mainCtrl.js"></script>
-  <script src="./services/orderService.js"></script>
-  <script src="./services/orderService.js"></script>
-  <script src="./controllers/mainCtrl.js"></script>
-  <script src="./components/orders/orders.js"></script>
-  <script src="./components/order/order.js"></script>
-  <script src="./components/order/byStatusFilter.js"></script>
+  <script src="assets/vendor/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.7.0/lodash.js"></script>
+  <script src="assets/vendor/angular-animate.js"></script>
+  <script src="assets/vendor/angular-ui-router.min.js"></script>
+  <script src="assets/vendor/angular-local-storage.min.js"></script>
+  <script src="app.js"></script>
+  <script src="scripts/services/dataService.js"></script>
+  <script src="scripts/controllers/mainCtrl.js"></script>
+  <script src="scripts/services/orderService.js"></script>
+  <script src="scripts/controllers/mainCtrl.js"></script>
+  <script src="scripts/controllers/ordersCtrl.js"></script>
+  <script src="scripts/controllers/orderDetailCtrl.js"></script>
+  <script src="scripts/filters/filteringStatus.js"></script>
 </body>
 </html>

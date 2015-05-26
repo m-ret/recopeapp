@@ -1,28 +1,26 @@
 angular
-  .module('recope', [
+  .module('RecopeApp', [
     'ui.router',
     'ngAnimate',
     'LocalStorageModule',
-    'recope.controllers',
-    'recope.orders',
-    'recope.order'
+    'RecopeApp.controllers',
+    'RecopeApp.services',
+    'RecopeApp.filters'
   ])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise('/orders');
-
   $stateProvider
     .state('orders', {
-      url         : '/orders',
-      controller  : 'OrdersCtrl as orders',
-      templateUrl : './components/orders/orders.html'
+      url: '/orders',
+      controller: 'OrdersCtrl as ordersCtrl',
+      templateUrl: 'templates/ordersData.html'
     })
     .state('orders.order', {
-      url         : '/:id',
-      controller  : 'OrderDetailCtrl',
-      templateUrl : './components/order/order.html'
+      url: '/:id',
+      controller: 'OrderDetailCtrl',
+      templateUrl: 'templates/orderDetailTemplate.html'
     });
 
-    $urlRouterProvider.otherwise('/orders');
+  $urlRouterProvider.otherwise('/orders');
 })
