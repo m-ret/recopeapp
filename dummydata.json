@@ -1,4 +1,8 @@
 [{
+  "presionmaquina": "5 mb/s",
+  "medidoragua": "7 tons",
+  "cilindroscubico": "7",
+  "calibracionpresion": "45 grados",
   "id": "1",
   "order": "000001",
   "header": "Detalle completo del detalle de cabecera de la orden",

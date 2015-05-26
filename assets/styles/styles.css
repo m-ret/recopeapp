@@ -3,9 +3,16 @@
   outline    : none;
 }
 
-a {
-  color           : inherit;
-  text-decoration : inherit;
+/* unvisited link */
+a:link {
+    color: white;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: white;
+    text-decoration: none;
 }
 
 body, html, .l-container {
