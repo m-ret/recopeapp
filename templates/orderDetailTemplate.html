@@ -28,13 +28,16 @@
       <div class="operation__time">
         <div ng-if="operation.lastStart" class="operation__time__result"><strong>Inicio:</strong> <time>{{ (operation.start || operation.lastStart) | date:dateFormat }}</time></div>
         <div ng-if="operation.end" class="operation__time__result"><strong>Fin:</strong> <time>{{ operation.end | date:dateFormat }}</time></div>
-        <button ng-if="!operation.playing" ng-click="startOperation(operation)" class="operation__time__button operation__time__button--play"><i class="fa fa-play"></i></button>
-        <button ng-if="operation.playing" ng-click="pauseOperation(operation)" class="operation__time__button operation__time__button--pause"><i class="fa fa-pause"></i></button>
-        <button ng-disabled="operation.playing || !operation.end"
-                confirmed-click="finishOperation(operation)" ng-confirm-click="¿Seguro que desea notificar esta operación?"
-                class="operation__time__button operation__time__button--finish">Notificación final
+        <button ng-if="!operation.playing" ng-click="startOperation(operation)" class="btn btn-success"><i class="fa fa-play"></i></button>
+        <button ng-if="operation.playing" ng-click="pauseOperation(operation)" class="btn btn-warning"><i class="fa fa-pause"></i></button>
+        <button confirmed-click="finishOperation(operation)"
+                ng-disabled="operation.playing || !operation.end"
+                ng-confirm-click="¿Seguro que desea notificar esta operación?"
+                class="btn btn-danger">Notificación final
                 </i>
         </button>
+        <hr>
+        <input type="text" class="form-control" placeholder="Detalle">
       </div>
 
       <div class="operation__details">
@@ -42,7 +45,6 @@
         <div class="operation__time__result"><strong>Estado:</strong> <span class="text-color-{{ operation.status }}">{{ statuses[operation.status] }}</span></div>
         <div class="operation__time__result"><strong>Tempo planificado:</strong> {{ timeFormatter(operation.duration) }}</div>
         <div ng-if="operation.partialTime" class="operation__time__result"><strong>Tempo parcial:</strong> <span ng-class="{ 'text-color-2' : operation.partialTime > operation.duration }">{{ timeFormatter(operation.partialTime) }}</span></div>
-        <input type="text" class="form-control" placeholder="Detalle">
       </div>
     </div>
 
@@ -66,4 +68,5 @@
 </div>
 </div>
   </div>
+
 </div>
