@@ -10,7 +10,8 @@
       <td>{{ detail.value }}</td>
     </tr>
   </table>
-  <div class="panel panel-primary" ng-repeat="operation in data.operations | byStatus" ng-class="{ 'operation--finished': operation.status === 3 }">
+
+  <div class="panel panel-primary" ng-repeat="operation in data.operations | FilteringStatus" ng-class="{ 'operation--finished': operation.status === 3 }">
     <div class="panel-heading">{{ operation.title }}</div>
     <div class="panel-body">
       <div class="row">
