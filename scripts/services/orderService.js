@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('recope.services')
+angular.module('RecopeApp.services')
   .factory('OrderFactory', function($q) {
 
   	return {
@@ -18,7 +18,7 @@ angular.module('recope.services')
 				    value: 'Alberto Cole'
 				  }, {
 				    label: 'Responsable',
-				    value: 'Kevin Wolf'
+				    value: 'Marcelo Retana'
 				  }, {
 				    label: 'Solicitante',
 				    value: 'Recope'
@@ -80,10 +80,8 @@ angular.module('recope.services')
 					  header     : 'Detalle completo del detalle de cabecera de la orden',
 					  group      : 'Grupo Planificador Alajuela',
 					  operations : []
-					}]
-  			)
-
-
+					}]);
+        return deferred.promise;
   		}
   	}
   });

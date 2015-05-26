@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="./components/orders/orders.css">
   <link rel="stylesheet" href="./components/order/order.css">
 </head>
-<body ng-app="recope" ng-controller="MainCtrl" ng-cloak>
+<body ng-app="RecopeApp" ng-controller="MainCtrl" ng-cloak>
   <div class="l-container">
 
     <!-- Header. -->
@@ -46,18 +46,18 @@
   </div>
 
   <!-- Scripts. -->
-  <script src="./assets/vendor/angular.min.js"></script>
-  <script src="./assets/vendor/angular-animate.js"></script>
-  <script src="./assets/vendor/angular-ui-router.min.js"></script>
-  <script src="./assets/vendor/angular-local-storage.min.js"></script>
-  <script src="./app.js"></script>
-  <script src="./services/dataService.js"></script>
-  <script src="./controllers/mainCtrl.js"></script>
-  <script src="./services/orderService.js"></script>
-  <script src="./services/orderService.js"></script>
-  <script src="./controllers/mainCtrl.js"></script>
-  <script src="./components/orders/orders.js"></script>
-  <script src="./components/order/order.js"></script>
-  <script src="./components/order/byStatusFilter.js"></script>
+  <script src="assets/vendor/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.7.0/lodash.js"></script>
+  <script src="assets/vendor/angular-animate.js"></script>
+  <script src="assets/vendor/angular-ui-router.min.js"></script>
+  <script src="assets/vendor/angular-local-storage.min.js"></script>
+  <script src="app.js"></script>
+  <script src="scripts/services/dataService.js"></script>
+  <script src="scripts/controllers/mainCtrl.js"></script>
+  <script src="scripts/services/orderService.js"></script>
+  <script src="scripts/controllers/mainCtrl.js"></script>
+  <script src="scripts/controllers/ordersCtrl.js"></script>
+  <script src="scripts/controllers/orderDetailCtrl.js"></script>
+  <script src="scripts/filters/filteringStatus.js"></script>
 </body>
 </html>
