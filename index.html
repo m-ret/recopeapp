@@ -9,26 +9,26 @@
   <link rel="stylesheet" href="./components/orders/orders.css">
   <link rel="stylesheet" href="./components/order/order.css">
 </head>
-<body ng-app="recope" ng-controller="AppController as app" ng-cloak>
+<body ng-app="recope" ng-controller="MainCtrl" ng-cloak>
   <div class="l-container">
 
     <!-- Header. -->
     <header class="l-header">
       <a ui-sref="orders" class="l-header__brand">RECOPE</a>
-      <a class="l-header__sync fa fa-refresh" ng-click="app.showSync = !app.showSync" ng-class="{ 'l-header__sync--idle' : app.idle }"></a>
+      <a class="l-header__sync fa fa-refresh" ng-click="showSync = !showSync" ng-class="{ 'l-header__sync--idle' : idle }"></a>
     </header>
 
     <!-- Sync bar. -->
-    <div class="l-sync" ng-if="app.showSync">
+    <div class="l-sync" ng-if="showSync">
       <em class="fa fa-rss"></em>
       <h3>Estado de la conexión</h3>
-      <p ng-show="!app.online" class="text-color-0">Sin conexión</p>
-      <p ng-show="app.online" class="text-color-1">Online</p>
+      <p ng-show="!online" class="text-color-0">Sin conexión</p>
+      <p ng-show="online" class="text-color-1">Online</p>
       <hr>
       <em class="fa fa-calendar"></em>
       <h3>Última sincronización</h3>
-      <p><time>{{ app.appLastUpdate | date:app.dateFormat }}</time></p>
-      <button ng-disabled="!app.online" class="sync-button" ng-click="app.sync()"><span class="fa fa-refresh"></span> Sincronizar</button>
+      <p><time>{{ appLastUpdate | date:dateFormat }}</time></p>
+      <button ng-disabled="!online" class="sync-button" ng-click="sync()"><span class="fa fa-refresh"></span> Sincronizar</button>
     </div>
 
     <!-- Viewport. -->
@@ -42,6 +42,7 @@
   <script src="./assets/vendor/angular-local-storage.min.js"></script>
   <script src="./app.js"></script>
   <script src="./services/dataService.js"></script>
+  <script src="./controllers/mainCtrl.js"></script>
   <script src="./components/orders/orders.js"></script>
   <script src="./components/order/order.js"></script>
   <script src="./components/order/byStatusFilter.js"></script>
