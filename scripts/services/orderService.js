@@ -78,7 +78,7 @@ angular.module('RecopeApp.services')
 					  id         : '2',
 					  order      : '000002',
 					  header     : 'Detalle completo del detalle de cabecera de la orden',
-					  group      : 'Grupo Planificador Alajuela',
+					  group      : 'Grupo Planificador mierda',
 					  operations : []
 					}]);
         return deferred.promise;
