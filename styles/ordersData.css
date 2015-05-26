@@ -27,11 +27,11 @@
   }
 
   .orders__item--active .orders__item__description {
-    color : white;
+    color : #34495E;
   }
 
   .orders__item__title, .orders__item__description {
-    margin : 0;
+    color : #34495E;
   }
 
     .orders__item:last-child {
