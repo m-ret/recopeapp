@@ -31,12 +31,40 @@
           </button>
         </div>
         <div class="col-sm-8">
-          <h4 class="operation__details__title">Detalles</h4>
+          <span class="operation__details__title">Detalles</span>
+          <button type="button" class="btn btn-primary btn-sm print-button"><i class="fa fa-print"></i></button>
+          <hr>
           <div class="operation__time__result"><strong>Estado:</strong> <span class="text-color-{{ operation.status }}">{{ statuses[operation.status] }}</span></div>
           <div class="operation__time__result"><strong>Tempo planificado:</strong> {{ toHoursAndMinutes(operation.duration) }}</div>
           <div ng-if="operation.partialTime" class="operation__time__result"><strong>Tempo parcial:</strong> <span ng-class="{ 'text-color-2' : operation.partialTime > operation.duration }">{{ toHoursAndMinutes(operation.partialTime) }}</span></div>         
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">Mediciones</div>
+    <div class="panel-body">  
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Presion de la máquina</th>
+            <td>5 mb/s</td>
+          </tr>
+          <tr>
+            <th>Medidor de agua</th>
+            <td>7 tons</td>
+          </tr>
+          <tr>
+            <th>Cilindros por metros cúbicos</th>
+            <td>7</td>
+          </tr>
+          <tr>
+            <th>Calibración de presión</th>
+            <td>45 grados</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 

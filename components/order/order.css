@@ -119,26 +119,15 @@
       width         : 100%;
     }
 
-      .operation__time__button--play {
-        background-color : #2ECC71;
-      }
-
-      .operation__time__button--pause {
-        background-color : #FFDE29;
-      }
-
-      .operation__time__button--finish {
-        background-color : #E74C3C;
-        font-weight      : bold;
-      }
-
   .operation__details {
     flex : 1;
   }
 
-    .operation__details__title {
-      border-bottom  : 1px solid #ccc;
-      padding-bottom : 10px;
-      margin         : 0;
-      margin-bottom  : 15px;
-    }
+  .operation__details__title {
+    margin-bottom  : 10px;
+    font-size: 20px;
+  }
+
+  .print-button {
+    float: right;
+  }
