@@ -3,8 +3,8 @@ angular.module('RecopeApp.filters', [])
 
     return function (operations) {
 
-      var incomplete = [],
-          completed   = [];
+      var completed = [],
+          incomplete = [];
 
       if (!operations) {
         return;

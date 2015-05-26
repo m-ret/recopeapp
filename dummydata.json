@@ -1,9 +1,9 @@
 [{
-  "id"         : "1",
-  "order"      : "000001",
-  "header"     : "Detalle completo del detalle de cabecera de la orden",
-  "group"      : "Grupo Planificador Belén",
-  "details"    : [{
+  "id": "1",
+  "order": "000001",
+  "header": "Detalle completo del detalle de cabecera de la orden",
+  "group": "Grupo Planificador Belén",
+  "details": [{
     "label": "Supervisor",
     "value": "Alberto Cole"
   }, {
@@ -55,19 +55,19 @@
     "label": "Fecha prox. Mtto",
     "value": "17 de julio"
   }],
-  "operations" : [{
-    "title"    : "Operación 170794",
-    "duration" : "3600",
-    "status"   : "0"
+  "operations": [{
+    "title": "Operación 170794",
+    "duration": "3600",
+    "status": "0"
   }, {
-    "title"    : "Operación 981922",
-    "duration" : "60",
-    "status"   : "0"
+    "title": "Operación 981922",
+    "duration": "60",
+    "status": "0"
   }]
 }, {
-  "id"         : "2",
-  "order"      : "000002",
-  "header"     : "Detalle completo del detalle de cabecera de la orden",
-  "group"      : "Grupo Planificador Alajuela",
-  "operations" : []
+  "id": "2",
+  "order": "000002",
+  "header": "Detalle completo del detalle de cabecera de la orden",
+  "group": "Grupo Planificador Alajuela",
+  "operations": []
 }]
