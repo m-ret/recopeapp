@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RECOPE - Proyecto de Mantenimiento</title>
+  <link rel="stylesheet" href="./assets/vendor/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/styles/font-lato.css">
+  <link rel="stylesheet" href="./assets/styles/styles.css">
+  <link rel="stylesheet" href="./components/orders/orders.css">
+  <link rel="stylesheet" href="./components/order/order.css">
+</head>
+<body ng-app="recope" ng-controller="AppController as app" ng-cloak>
+  <div class="l-container">
+
+    <!-- Header. -->
+    <header class="l-header">
+      <a ui-sref="orders" class="l-header__brand">RECOPE</a>
+      <a class="l-header__sync fa fa-refresh" ng-click="app.showSync = !app.showSync" ng-class="{ 'l-header__sync--idle' : app.idle }"></a>
+    </header>
+
+    <!-- Sync bar. -->
+    <div class="l-sync" ng-if="app.showSync">
+      <em class="fa fa-rss"></em>
+      <h3>Estado de la conexión</h3>
+      <p ng-show="!app.online" class="text-color-0">Sin conexión</p>
+      <p ng-show="app.online" class="text-color-1">Online</p>
+      <hr>
+      <em class="fa fa-calendar"></em>
+      <h3>Última sincronización</h3>
+      <p><time>{{ app.appLastUpdate | date:app.dateFormat }}</time></p>
+      <button ng-disabled="!app.online" class="sync-button" ng-click="app.sync()"><span class="fa fa-refresh"></span> Sincronizar</button>
+    </div>
+
+    <!-- Viewport. -->
+    <ui-view class="l-content"></ui-view>
+  </div>
+
+  <!-- Scripts. -->
+  <script src="./assets/vendor/angular.min.js"></script>
+  <script src="./assets/vendor/angular-animate.js"></script>
+  <script src="./assets/vendor/angular-ui-router.min.js"></script>
+  <script src="./assets/vendor/angular-local-storage.min.js"></script>
+  <script src="./app.js"></script>
+  <script src="./services/dataService.js"></script>
+  <script src="./components/orders/orders.js"></script>
+  <script src="./components/order/order.js"></script>
+  <script src="./components/order/byStatusFilter.js"></script>
+</body>
+</html>
