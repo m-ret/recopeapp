@@ -1,33 +1,69 @@
 <div class="l-module-title order__title">Detalle de la orden <a ui-sref="orders" class="order__close fa fa-times-circle"></a></div>
-<div class="l-module-content order__content">
-  <h1 class="order__number">Orden {{ data.order }}</h1>
-  <p class="order__description">{{ data.header }}</p>
-
-  <table class="order__details">
-    <tr ng-repeat="detail in data.details">
-      <th>{{ detail.label }}</th>
-      <td>{{ detail.value }}</td>
-    </tr>
-  </table>
-
-  <div class="operation" ng-repeat="operation in data.operations | FilteringStatus" ng-class="{ 'operation--finished': operation.status === 3 }">
-    <div class="operation__title"><h1>{{ operation.title }}</h1></div>
-    <div class="operation__content">
-      <div class="operation__time">
-        <div ng-if="operation.lastStart" class="operation__time__result"><strong>Inicio:</strong> <time>{{ (operation.start || operation.lastStart) | date:dateFormat }}</time></div>
-        <div ng-if="operation.end" class="operation__time__result"><strong>Fin:</strong> <time>{{ operation.end | date:dateFormat }}</time></div>
-        <button ng-if="!operation.playing" ng-click="startOperation(operation)" class="operation__time__button operation__time__button--play"><i class="fa fa-play"></i></button>
-        <button ng-if="operation.playing" ng-click="pauseOperation(operation)" class="operation__time__button operation__time__button--pause"><i class="fa fa-pause"></i></button>
-        <button ng-disabled="operation.playing || !operation.end" ng-click="finishOperation(operation)" class="operation__time__button operation__time__button--finish">Notificación final</i></button>
-      </div>
-      <div class="operation__details">
-        <h2 class="operation__details__title">Detalles</h2>
-        <div class="operation__time__result"><strong>Estado:</strong> <span class="text-color-{{ operation.status }}">{{ statuses[operation.status] }}</span></div>
-        <div class="operation__time__result"><strong>Tempo planificado:</strong> {{ timeFormatter(operation.duration) }}</div>
-        <div ng-if="operation.partialTime" class="operation__time__result"><strong>Tempo parcial:</strong> <span ng-class="{ 'text-color-2' : operation.partialTime > operation.duration }">{{ timeFormatter(operation.partialTime) }}</span></div>
-        <input type="text" placeholder="Detalle">
+<div class="l-module-content">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          Orden {{ data.order }}
+        </div>
+        <div class="panel-body">
+        <p class="order__description">{{ data.header }}</p>
+        <table class="order__details">
+          <tr ng-repeat="detail in data.details">
+            <th>{{ detail.label }}</th>
+            <td>{{ detail.value }}</td>
+          </tr>
+        </table>   
+        </div>
+      </div>  
+    </div>
+    <div class="col-sm-4">          
+      <div class="panel panel-primary" ng-repeat="operation in data.operations | FilteringStatus" ng-class="{ 'operation--finished': operation.status === 3 }">
+        <div class="panel-heading">{{ operation.title }}</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-5">
+              <div ng-show="operation.lastStart" class="operation__time__result"><strong>Inicio:</strong> <time>{{ (operation.start || operation.lastStart) | date:dateFormat }}</time>
+              </div>
+              <div ng-show="operation.end" class="operation__time__result"><strong>Fin:</strong> <time>{{ operation.end | date:dateFormat }}</time>
+              </div>
+              <button ng-if="!operation.playing" ng-click="startOperation(operation)" type="button" class="btn btn-success btn-block">
+                <i class="fa fa-play"></i>
+              </button>
+              <button ng-if="operation.playing" ng-click="pauseOperation(operation)" class="btn btn-warning btn-block">
+                <i class="fa fa-pause"></i>
+              </button>
+              <button ng-disabled="operation.playing || !operation.end" ng-click="finishOperation(operation)" 
+              class="btn btn-danger btn-block">Notificación final
+              </button>
+            </div>
+            <div class="col-sm-7">
+              <span class="operation__details__title">Detalles</span>
+              <button type="button" class="btn btn-primary btn-sm print-button"><i class="fa fa-print"></i></button>
+              <hr>
+              <div class="operation__time__result"><strong>Estado:</strong> <span class="text-color-{{ operation.status }}">{{ statuses[operation.status] }}</span></div>
+              <div class="operation__time__result"><strong>Tempo planificado:</strong> {{ timeFormatter(operation.duration) }}</div>
+              <div ng-if="operation.partialTime" class="operation__time__result"><strong>Tempo parcial:</strong> <span ng-class="{ 'text-color-2' : operation.partialTime > operation.duration }">{{ timeFormatter(operation.partialTime) }}</span></div>
+              <input type="text" placeholder="Detalle">         
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Mediciones</div>
+        <div class="panel-body">
+          <table class="table">
+            <tbody>
+              <tr ng-repeat="medicion in data.mediciones">
+                <th>{{medicion.label}}</th>
+                <td>{{medicion.value}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>  
+    </div>
   </div>
-
 </div>

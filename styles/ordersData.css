@@ -7,7 +7,7 @@
 }
 
 .orders--collapsed {
-  width : 400px;
+  display: none;
 }
 
   .orders__item {

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>RECOPE - Proyecto de Mantenimiento</title>
   <link rel="stylesheet" href="assets/vendor/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/vendor/bootstrap.css">
   <link rel="stylesheet" href="assets/styles/font-lato.css">
   <link rel="stylesheet" href="assets/styles/styles.css">
   <link rel="stylesheet" href="styles/ordersData.css">
@@ -19,16 +20,25 @@
     </header>
 
     <!-- Sync bar. -->
-    <div class="l-sync" ng-if="showSync">
-      <em class="fa fa-rss"></em>
-      <h3>Estado de la conexión</h3>
-      <p ng-show="!online" class="text-color-0">Sin conexión</p>
-      <p ng-show="online" class="text-color-1">Online</p>
-      <hr>
-      <em class="fa fa-calendar"></em>
-      <h3>Última sincronización</h3>
-      <p><time>{{ getLastUpdate | date: dateFormat }}</time></p>
-      <button ng-disabled="!online" class="sync-button" ng-click="syncro()"><span class="fa fa-refresh"></span> Sincronizar</button>
+    <div class="well" ng-if="showSync">
+      <div class "row">
+        <div class="col-sm-6">
+          <div class="text-center">
+            <h4 class="fa fa-rss fa-3x"></h4>
+            <h3>Estado de la conexión</h3>
+            <p ng-show="!online" class="text-color-0">Sin conexión</p>
+            <p ng-show="online" class="text-color-1">Online</p>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="text-center">
+            <i class="fa fa-calendar fa-3x"></i>
+            <h3>Última sincronización</h3>
+            <p><time>{{ getLastUpdate | date: dateFormat }}</time></p>
+            <button ng-disabled="!online" type="button" class="btn btn-primary" ng-click="syncro()"><span class="fa fa-refresh"></span> Sincronizar</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Viewport. -->
@@ -41,6 +51,7 @@
   <script src="assets/vendor/angular-animate.js"></script>
   <script src="assets/vendor/angular-ui-router.min.js"></script>
   <script src="assets/vendor/angular-local-storage.min.js"></script>
+  <script src="assets/vendor/bootstrap.js"></script>
   <script src="app.js"></script>
   <script src="scripts/services/dataService.js"></script>
   <script src="scripts/controllers/mainCtrl.js"></script>
