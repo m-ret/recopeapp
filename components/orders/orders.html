@@ -1,8 +1,9 @@
-<div class="orders" ng-class="{ 'orders--collapsed': orders.$state.current.name === 'orders.order' }">
+<div ng-hide="hideOrders"class="orders" ng-class="{ 'orders--collapsed': orders.$state.current.name === 'orders.order' }">
   <div class="l-module-title orders__title">Lista de ordenes</div>
 
   <div class="l-module-content">
     <a class="orders__item"
+      ng-click="hideColumn()"
       ng-repeat="order in orders.data"
       ui-sref="orders.order({ id: order.id })"
       ui-sref-active="orders__item--active">
