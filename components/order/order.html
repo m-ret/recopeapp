@@ -1,30 +1,30 @@
 <div class="l-module-title order__title">Detalle de la orden <a ui-sref="orders" class="order__close fa fa-times-circle"></a></div>
 <div class="l-module-content order__content">
-  <h1 class="order__number">Orden {{ order.data.order }}</h1>
-  <p class="order__description">{{ order.data.header }}</p>
+  <h1 class="order__number">Orden {{ data.order }}</h1>
+  <p class="order__description">{{ data.header }}</p>
 
   <table class="order__details">
-    <tr ng-repeat="detail in order.data.details">
+    <tr ng-repeat="detail in data.details">
       <th>{{ detail.label }}</th>
       <td>{{ detail.value }}</td>
     </tr>
   </table>
 
-  <div class="operation" ng-repeat="operation in order.data.operations | byStatus" ng-class="{ 'operation--finished': operation.status === 3 }">
+  <div class="operation" ng-repeat="operation in data.operations | byStatus" ng-class="{ 'operation--finished': operation.status === 3 }">
     <div class="operation__title"><h1>{{ operation.title }}</h1></div>
     <div class="operation__content">
       <div class="operation__time">
         <div ng-if="operation.lastStart" class="operation__time__result"><strong>Inicio:</strong> <time>{{ (operation.start || operation.lastStart) | date:app.dateFormat }}</time></div>
         <div ng-if="operation.end" class="operation__time__result"><strong>Fin:</strong> <time>{{ operation.end | date:app.dateFormat }}</time></div>
-        <button ng-if="!operation.playing" ng-click="order.startOperation(operation)" class="operation__time__button operation__time__button--play"><i class="fa fa-play"></i></button>
-        <button ng-if="operation.playing" ng-click="order.pauseOperation(operation)" class="operation__time__button operation__time__button--pause"><i class="fa fa-pause"></i></button>
-        <button ng-disabled="operation.playing || !operation.end" ng-click="order.finishOperation(operation)" class="operation__time__button operation__time__button--finish">Notificación final</i></button>
+        <button ng-if="!operation.playing" ng-click="startOperation(operation)" class="operation__time__button operation__time__button--play"><i class="fa fa-play"></i></button>
+        <button ng-if="operation.playing" ng-click="pauseOperation(operation)" class="operation__time__button operation__time__button--pause"><i class="fa fa-pause"></i></button>
+        <button ng-disabled="operation.playing || !operation.end" ng-click="finishOperation(operation)" class="operation__time__button operation__time__button--finish">Notificación final</i></button>
       </div>
       <div class="operation__details">
         <h2 class="operation__details__title">Detalles</h2>
-        <div class="operation__time__result"><strong>Estado:</strong> <span class="text-color-{{ operation.status }}">{{ order.statuses[operation.status] }}</span></div>
-        <div class="operation__time__result"><strong>Tempo planificado:</strong> {{ order.toHoursAndMinutes(operation.duration) }}</div>
-        <div ng-if="operation.partialTime" class="operation__time__result"><strong>Tempo parcial:</strong> <span ng-class="{ 'text-color-2' : operation.partialTime > operation.duration }">{{ order.toHoursAndMinutes(operation.partialTime) }}</span></div>
+        <div class="operation__time__result"><strong>Estado:</strong> <span class="text-color-{{ operation.status }}">{{ statuses[operation.status] }}</span></div>
+        <div class="operation__time__result"><strong>Tempo planificado:</strong> {{ toHoursAndMinutes(operation.duration) }}</div>
+        <div ng-if="operation.partialTime" class="operation__time__result"><strong>Tempo parcial:</strong> <span ng-class="{ 'text-color-2' : operation.partialTime > operation.duration }">{{ toHoursAndMinutes(operation.partialTime) }}</span></div>
       </div>
     </div>
   </div>

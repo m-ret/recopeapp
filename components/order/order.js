@@ -1,99 +1,193 @@
-angular
-  .module('recope.order', [])
-  .controller('OrderController', OrderController);
+angular.module('recope.order', [])
+  .controller('OrderDetailCtrl', function($rootScope, $scope, dataService, $stateParams) {
 
-function OrderController($rootScope, dataService, $stateParams) {
-  var vm = this;
+    $scope.statuses = {
+      0 : 'Sin comenzar',
+      1 : 'Iniciada',
+      2 : 'Pausada',
+      3 : 'Terminada'
+    }
 
-  vm.statuses = {
-    0 : 'Sin comenzar',
-    1 : 'Iniciada',
-    2 : 'Pausada',
-    3 : 'Terminada'
-  }
+    $scope.data              = _findCurrentOrder(dataService.data);
+    $scope.toHoursAndMinutes = toHoursAndMinutes;
+    $rootScope.$on('appData:update', updateData);
 
-  vm.data              = _findCurrentOrder(dataService.data);
-  vm.toHoursAndMinutes = toHoursAndMinutes;
-  vm.startOperation    = startOperation;
-  vm.pauseOperation    = pauseOperation;
-  vm.finishOperation   = finishOperation;
-  $rootScope.$on('appData:update', updateData);
+    // Update application data.
+    function updateData(e, data) {
+      $scope.data = _findCurrentOrder(data);
+    }
 
-  return vm;
+    // Find the current order.
+    function _findCurrentOrder(data) {
+      var response;
 
-  // Update application data.
-  function updateData(e, data) {
-    vm.data = _findCurrentOrder(data);
-  }
+      for (var i in data) {
+        var order = data[i];
 
-  // Find the current order.
-  function _findCurrentOrder(data) {
-    var response;
-
-    for (var i in data) {
-      var order = data[i];
-
-      if ($stateParams.id == order.id) {
-        response = order;
-        break;
+        if ($stateParams.id == order.id) {
+          response = order;
+          break;
+        }
       }
+
+      return response;
     }
 
-    return response;
-  }
+    // Convert seconds to hours and minutes.
+    function toHoursAndMinutes(seconds) {
+      var hours   = Math.floor(seconds / 3600)
+        , minutes = Math.ceil((seconds - (hours * 3600)) / 60)
+        , result  = '';
 
-  // Convert seconds to hours and minutes.
-  function toHoursAndMinutes(seconds) {
-    var hours   = Math.floor(seconds / 3600)
-      , minutes = Math.ceil((seconds - (hours * 3600)) / 60)
-      , result  = '';
+      if (hours) {
+        result += hours + ' hora';
+        if (hours > 1) result += 's';
+        result += ' ';
+      }
 
-    if (hours) {
-      result += hours + ' hora';
-      if (hours > 1) result += 's';
-      result += ' ';
+      if (minutes) {
+        result += minutes + ' minuto';
+        if (minutes > 1) result += 's';
+      }
+
+      return result;
     }
 
-    if (minutes) {
-      result += minutes + ' minuto';
-      if (minutes > 1) result += 's';
+    // Start an operation timer.
+    $scope.startOperation = function(operation) {
+      var operation = $scope.data.operations[$scope.data.operations.indexOf(operation)];
+
+      operation.lastStart = Date.now();
+      operation.playing = true;
+      operation.status = 1;
+      dataService.update();
+
+      console.log(operation);
     }
 
-    return result;
-  }
+    // Pause an operation timer.
+    $scope.pauseOperation = function(operation) {
+      var operation = $scope.data.operations[$scope.data.operations.indexOf(operation)];
 
-  // Start an operation timer.
-  function startOperation(operation) {
-    var operation = vm.data.operations[vm.data.operations.indexOf(operation)];
+      if (!operation.start) {
+        operation.start = operation.lastStart;
+      }
 
-    operation.lastStart = Date.now();
-    operation.playing = true;
-    operation.status = 1;
-    dataService.update();
-  }
+      operation.end = Date.now();
+      operation.playing = false;
+      operation.status = 2;
 
-  // Pause an operation timer.
-  function pauseOperation(operation) {
-    var operation = vm.data.operations[vm.data.operations.indexOf(operation)];
-
-    if (!operation.start) {
-      operation.start = operation.lastStart;
+      // Sumarize the transcurred seconds.
+      operation.partialTime = operation.partialTime || 0;
+      operation.partialTime += Math.ceil((operation.end - operation.lastStart) / 1000);
+      dataService.update();
     }
 
-    operation.end = Date.now();
-    operation.playing = false;
-    operation.status = 2;
+    // Finish an operation.
+    $scope.finishOperation = function(operation) {
+      var operation = $scope.data.operations[$scope.data.operations.indexOf(operation)];
+      operation.status = 3;
+      dataService.update();
+    }
 
-    // Sumarize the transcurred seconds.
-    operation.partialTime = operation.partialTime || 0;
-    operation.partialTime += Math.ceil((operation.end - operation.lastStart) / 1000);
-    dataService.update();
-  }
+  });
 
-  // Finish an operation.
-  function finishOperation(operation) {
-    var operation = vm.data.operations[vm.data.operations.indexOf(operation)];
-    operation.status = 3;
-    dataService.update();
-  }
-}
+// angular.module('recope.order', [])
+//   .controller('OrderDetailCtrl', OrderDetailCtrl);
+
+// function OrderDetailCtrl($rootScope, dataService, $stateParams) {
+//   var vm = this;
+
+//   vm.statuses = {
+//     0 : 'Sin comenzar',
+//     1 : 'Iniciada',
+//     2 : 'Pausada',
+//     3 : 'Terminada'
+//   }
+
+//   vm.data              = _findCurrentOrder(dataService.data);
+//   vm.toHoursAndMinutes = toHoursAndMinutes;
+//   vm.startOperation    = startOperation;
+//   vm.pauseOperation    = pauseOperation;
+//   vm.finishOperation   = finishOperation;
+//   $rootScope.$on('appData:update', updateData);
+
+//   return vm;
+
+//   // Update application data.
+//   function updateData(e, data) {
+//     vm.data = _findCurrentOrder(data);
+//   }
+
+//   // Find the current order.
+//   function _findCurrentOrder(data) {
+//     var response;
+
+//     for (var i in data) {
+//       var order = data[i];
+
+//       if ($stateParams.id == order.id) {
+//         response = order;
+//         break;
+//       }
+//     }
+
+//     return response;
+//   }
+
+//   // Convert seconds to hours and minutes.
+//   function toHoursAndMinutes(seconds) {
+//     var hours   = Math.floor(seconds / 3600)
+//       , minutes = Math.ceil((seconds - (hours * 3600)) / 60)
+//       , result  = '';
+
+//     if (hours) {
+//       result += hours + ' hora';
+//       if (hours > 1) result += 's';
+//       result += ' ';
+//     }
+
+//     if (minutes) {
+//       result += minutes + ' minuto';
+//       if (minutes > 1) result += 's';
+//     }
+
+//     return result;
+//   }
+
+//   // Start an operation timer.
+//   function startOperation(operation) {
+//     var operation = vm.data.operations[vm.data.operations.indexOf(operation)];
+
+//     operation.lastStart = Date.now();
+//     operation.playing = true;
+//     operation.status = 1;
+//     dataService.update();
+//   }
+
+//   // Pause an operation timer.
+//   function pauseOperation(operation) {
+//     var operation = vm.data.operations[vm.data.operations.indexOf(operation)];
+
+//     if (!operation.start) {
+//       operation.start = operation.lastStart;
+//     }
+
+//     operation.end = Date.now();
+//     operation.playing = false;
+//     operation.status = 2;
+
+//     // Sumarize the transcurred seconds.
+//     operation.partialTime = operation.partialTime || 0;
+//     operation.partialTime += Math.ceil((operation.end - operation.lastStart) / 1000);
+//     dataService.update();
+//   }
+
+//   // Finish an operation.
+//   function finishOperation(operation) {
+//     var operation = vm.data.operations[vm.data.operations.indexOf(operation)];
+//     operation.status = 3;
+//     dataService.update();
+//   }
+// }
+

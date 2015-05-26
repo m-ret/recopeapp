@@ -1,8 +1,7 @@
-angular
-  .module('recope.orders', [])
-  .controller('OrdersController', OrdersController);
+angular.module('recope.orders', [])
+  .controller('OrdersCtrl', OrdersCtrl);
 
-function OrdersController($rootScope, $state, dataService) {
+function OrdersCtrl($rootScope, $state, dataService) {
   var vm = this;
 
   vm.data   = dataService.data;
