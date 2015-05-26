@@ -34,7 +34,7 @@
           <div class="text-center">
             <i class="fa fa-calendar fa-3x"></i>
             <h3>Última sincronización</h3>
-            <p><time>{{ appLastUpdate | date:dateFormat }}</time></p>
+            <p><time>{{ getLastUpdate | date: dateFormat }}</time></p>
             <button ng-disabled="!online" type="button" class="btn btn-primary" ng-click="syncro()"><span class="fa fa-refresh"></span> Sincronizar</button>
           </div>
         </div>

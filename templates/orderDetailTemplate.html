@@ -45,24 +45,12 @@
 
   <div class="panel panel-primary">
     <div class="panel-heading">Mediciones</div>
-    <div class="panel-body">  
+    <div class="panel-body">
       <table class="table">
         <tbody>
-          <tr>
-            <th>Presion de la máquina</th>
-            <td>5 mb/s</td>
-          </tr>
-          <tr>
-            <th>Medidor de agua</th>
-            <td>7 tons</td>
-          </tr>
-          <tr>
-            <th>Cilindros por metros cúbicos</th>
-            <td>7</td>
-          </tr>
-          <tr>
-            <th>Calibración de presión</th>
-            <td>45 grados</td>
+          <tr ng-repeat="medicion in data.mediciones">
+            <th>{{medicion.label}}</th>
+            <td>{{medicion.value}}</td>
           </tr>
         </tbody>
       </table>

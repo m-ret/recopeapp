@@ -55,6 +55,19 @@
     "label": "Fecha prox. Mtto",
     "value": "17 de julio"
   }],
+  "mediciones" : [{
+    "label": "Presión de la máquina",
+    "value": "5 mb/s"
+  }, {
+    "label": "Medidor de agua",
+    "value": "7 tons"
+  }, {
+    "label": "Cilindros por metro cúbico",
+    "value": "7"
+  }, {
+    "label": "Calibración de presión",
+    "value": "45 grados"    
+  }],
   "operations" : [{
     "title"    : "Operación 170794",
     "duration" : "3600",
@@ -83,10 +96,10 @@
     "value": "Grupo Planificador Belén"
   }, {
     "label": "Centro de Costo",
-    "value": "No se"
+    "value": "B-4"
   }, {
     "label": "Plantel",
-    "value": "Mi casa"
+    "value": "Barreal"
   }, {
     "label": "Área funcional",
     "value": "Programación"
@@ -120,6 +133,19 @@
   }, {
     "label": "Fecha prox. Mtto",
     "value": "17 de julio"
+  }],
+    "mediciones" : [{
+    "label": "Presión de la máquina",
+    "value": "7 mb/s"
+  }, {
+    "label": "Medidor de agua",
+    "value": "10 tons"
+  }, {
+    "label": "Cilindros por metro cúbico",
+    "value": "12"
+  }, {
+    "label": "Calibración de presión",
+    "value": "57 grados"    
   }],
   "operations" : [{
     "title"    : "Operación 4859301",
