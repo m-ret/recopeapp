@@ -4,7 +4,7 @@
 <div class="l-module-content order__content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-sm-3 col-padding">
         <div class="panel panel-primary">
           <div class="panel-heading">
             Orden {{ data.order }}
@@ -21,7 +21,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-5">
+      <div class="col-sm-6 col-padding">
         <div class="panel panel-primary" ng-repeat="operation in data.operations | FilteringStatus" ng-class="{ 'operation--finished': operation.status === 3 }">
           <div class="panel-heading">{{ operation.title }}</div>
           <div class="panel-body">
@@ -33,23 +33,46 @@
                 <div ng-if="operation.end" class="operation__time__result"><strong>Fin:</strong>
                   <time>{{ operation.end | date:dateFormat }}</time>
                 </div>
-                <button ng-if="!operation.playing" ng-click="startOperation(operation)" class="btn btn-success">
-                  <i class="fa fa-play"></i>
-                </button>
-                <button ng-if="operation.playing" ng-click="pauseOperation(operation)" class="btn btn-warning">
-                  <i class="fa fa-pause"></i>
-                </button>
-                <button confirmed-click="finishOperation(operation)"
-                        ng-disabled="operation.playing || !operation.end"
-                        ng-confirm-click="¿Seguro que desea notificar esta operación?"
-                        class="btn btn-danger">Notificación final
-                </button>
+                  <button ng-if="!operation.playing" ng-click="startOperation(operation)" class="btn btn-success btn-sm">
+                    <i class="fa fa-play"></i>
+                  </button>
+                  <button ng-if="operation.playing" ng-click="pauseOperation(operation)" class="btn btn-warning btn-sm">
+                    <i class="fa fa-pause"></i>
+                  </button>
+                  <button confirmed-click="finishOperation(operation)"
+                          ng-disabled="operation.playing || !operation.end"
+                          ng-confirm-click="¿Seguro que desea notificar esta operación?"
+                          class="btn btn-danger btn-sm">Notificación final
+                  </button>
+
+                  <div class="dropdown padding-top">
+                    <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenu1" 
+                            data-toggle="dropdown" aria-expanded="true">
+                            Motivos de desviación
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">Motivo de desviación 1</a>
+                      </li>
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">Motivo de desviación 2</a>
+                      </li>
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">Motivo de desviación 3</a>
+                      </li>
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">Motivo de desviación 3</a>
+                      </li>
+                    </ul>
+                  </div>
                 <hr>
                 <input type="text" class="form-control" placeholder="Detalle">      
               </div>
               <div class="col-sm-5">
                 <span class="operation__details__title">Detalles</span>
-                <button type="button" class="btn btn-primary btn-sm print-button"><i class="fa fa-print"></i></button>
+                <button type="button" class="btn btn-primary btn-sm print-button">
+                  <i class="fa fa-print"></i></button>
                 <div class="operation__time__result">
                   <strong>Estado:</strong><span class="text-color-{{ operation.status }}">{{ statuses[operation.status] }}</span>
                 </div>
@@ -65,7 +88,7 @@
           </div>     
         </div>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-3 col-padding">
         <div class="panel panel-primary">
           <div class="panel-heading">Mediciones</div>
           <div class="panel-body">
