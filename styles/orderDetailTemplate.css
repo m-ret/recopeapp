@@ -131,3 +131,11 @@
   .print-button {
     float: right;
   }
+
+  .row .col-padding {
+    padding: 0 5px;
+  }
+
+  div.padding-top {
+    margin-top: 5px;
+  }
