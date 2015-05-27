@@ -1,32 +1,30 @@
 * {
-  box-sizing : border-box;
-  outline    : none;
+  box-sizing: border-box;
+  outline: none;
 }
 
-/* unvisited link */
 a:link {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
-/* mouse over link */
 a:hover {
     color: white;
     text-decoration: none;
 }
 
-body, html, .l-container {
-  color    : #2C3E50;
-  height   : 100%;
-  overflow : hidden;
+body, html, .index-container {
+  color: #2C3E50;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
-  background-color : white;
-  font-family      : "Lato", Helvetica, Arial, sans-serif;
-  font-size        : 15px;
-  margin           : 0;
-  padding          : 0;
+  background-color: white;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
 }
 
 button[disabled] {
@@ -34,101 +32,88 @@ button[disabled] {
 }
 
 [ng-cloak] {
-  display : none;
+  display: none;
 }
 
-/* Layout parts. */
-.l-container {
-  display        : flex;
-  flex-direction : column;
+.index-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.l-header {
-  background-color : #3498DB;
-  color            : white;
-  font-size        : 1.5em;
-  padding          : 15px;
+.header-banner {
+  background-color: #3498DB;
+  color: white;
+  font-size: 1.5em;
+  padding: 15px;
 }
 
-  .l-header__brand {
-    font-weight : bold;
-  }
-
-  .l-header__sync {
-    float : right;
-  }
-
-    .l-header__sync--idle {
-      -webkit-animation : rotate 1s infinite;
-    }
-
-    @-webkit-keyframes rotate {
-      0%   { transform : rotate(0deg) }
-      50%  { transform : rotate(360deg) }
-    }
-
-.l-sync {
-  background-color : #ECF0F1;
-  box-shadow       : inset 0 0 5px black;
-  color            : #7F8C8D;
-  padding          : 25px 15px;
-  text-align       : center;
-  text-shadow      : 1px 1px white;
+.title-brand {
+  color: white;
+  font-weight: bold;
 }
 
-  .l-sync .fa:not(.fa-refresh) {
-    font-size : 3em;
-  }
+.sync-btn {
+  color: white;
+  cursor: pointer;
+  float: right;
+}
 
-  .l-sync .fa-rss {
-    transform : rotate(-45deg);
-  }
+.syncro-rotate {
+  -webkit-animation: rotate 1s infinite;
+}
 
-  .l-sync hr {
-    border : 1px solid #ccc;
-    margin : 15px 0;
-  }
+@-webkit-keyframes rotate {
+  0%   { transform: rotate(0deg) }
+  50%  { transform: rotate(360deg) }
+}
 
 .sync-button {
-  background-color : #3498DB;
-  border           : 0;
-  border-radius    : 10px;
-  color            : white;
-  font-size        : 1.5em;
-  margin-top       : 25px;
-  padding          : 10px;
-  width            : 300px;
+  background-color: #3498DB;
+  border: 0;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.5em;
+  margin-top: 25px;
+  padding: 10px;
+  width: 300px;
 }
 
-.l-content {
-  display  : flex;
-  flex     : 1;
+.layout-content {
+  display: flex;
+  flex: 1;
 }
 
-.l-module-title {
-  background-color : #34495E;
-  color            : #95A5A6;
-  padding          : 15px;
+.btn {
+  border-radius: 0;
 }
 
-.l-module-content {
-  flex     : 1;
-  overflow : scroll;
+.non-border-rad {
+  border-radius: 0;
 }
 
-/* Text colors. */
+.order-detail-title {
+  background-color: #34495E;
+  color: #95A5A6;
+  padding: 10px;
+}
+
+.module-container {
+  flex: 1;
+  overflow: scroll;
+}
+
 .text-color-0 {
-  color : #BDC3C7;
+  color: #BDC3C7;
 }
 
 .text-color-1 {
-  color : #2980B9;
+  color: #2980B9;
 }
 
 .text-color-2 {
-  color : #D35400;
+  color: #D35400;
 }
 
 .text-color-3 {
-  color : #2ECC71;
+  color: #2ECC71;
 }
