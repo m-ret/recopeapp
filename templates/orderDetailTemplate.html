@@ -67,7 +67,10 @@
                     </ul>
                   </div>
                 <hr>
-                <input type="text" class="form-control" placeholder="Detalle">      
+                <input ng-model="operation.detailText" type="text" class="form-control" placeholder="Detalle">
+                <div class="well well-sm detail-text" ng-show="operation.detailText.length">
+                  <p class="text-muted">{{operation.detailText}}</p>
+                </div>
               </div>
               <div class="col-sm-5">
                 <span class="operation__details__title">Detalles</span>
