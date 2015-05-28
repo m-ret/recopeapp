@@ -61,11 +61,21 @@
                     <option value="operation.motivotres">3er motivo</option>
                     <option value="operation.motivocuatro">4to motivo</option>
                   </select>
+                  <select class="form-control select-actividad">
+                    <option selected value="">Clase de Actividad</option>
+                    <option value="operation.actividad1">Horas Ordinarias Laboradas</option>
+                    <option value="operation.actividad2">Extras diurnas sencillas</option>
+                    <option value="operation.actividad3">Extras diurnas vez y media</option>
+                    <option value="operation.actividad4">Extras diurnas dobles</option>
+                    <option value="operation.actividad5">Extras nocturnas sencillas</option>
+                    <option value="operation.actividad6">Extras nocturnas 1.5</option>
+                    <option value="operation.actividad7">Extras nocturnas dobles Actividades Alcance</option>
+                  </select>
                 </div>
 
                 <div class="row">
                   <div class="col-sm-10 col-xs-10">
-                    <input ng-model="operation.detailText" type="text" class="form-control" placeholder="Detalle">
+                    <input ng-model="operation.detailText" type="text" class="form-control" placeholder="Agregar Detalle">
                     <div class="well well-sm detail-text" ng-show="operation.detailText.length">
                       <p class="text-muted" ng-show="operation.detailText.length">{{operation.detailText}}</p>
                     </div>

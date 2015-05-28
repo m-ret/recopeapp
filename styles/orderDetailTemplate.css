@@ -70,7 +70,8 @@
   padding: 0 5px;
 }
 
-div.padding-top {
+div.padding-top,
+.select-actividad {
   margin-top: 5px;
 }
 
