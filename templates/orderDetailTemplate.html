@@ -28,55 +28,44 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-sm-7">
-                <div ng-if="operation.lastStart" class="total-time"><strong>Inicio:</strong>
-                  <time>{{ (operation.start || operation.lastStart) | date:dateFormat }}</time>
-                </div>
-                <div ng-if="operation.end" class="total-time"><strong>Fin:</strong>
-                  <time>{{ operation.end | date:dateFormat }}</time>
-                </div>
-                  <button ng-if="!operation.playing"
-                          ng-click="startOperation(operation)"
-                          class="btn btn-success btn-sm ">
-                    <i class="fa fa-play"></i>
-                  </button>
-                  <button ng-if="operation.playing"
-                          ng-click="pauseOperation(operation)"
-                          class="btn btn-warning btn-sm">
-                    <i class="fa fa-pause"></i>
-                  </button>
-                  <button confirmed-click="finishOperation(operation)"
-                          ng-disabled="operation.playing || !operation.end"
-                          ng-confirm-click="¿Seguro que desea notificar esta operación?"
-                          class="btn btn-danger btn-sm">Notificación final
-                  </button>
 
-                  <div class="dropdown padding-top">
-                    <button class="btn btn-default btn-sm dropdown-toggle"
-                            type="button" id="dropdownMenu1"
-                            data-toggle="dropdown"
-                            aria-expanded="true">
-                            Motivos de desviación
-                      <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                      <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">Motivo de desviación 1</a>
-                      </li>
-                      <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">Motivo de desviación 2</a>
-                      </li>
-                      <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">Motivo de desviación 3</a>
-                      </li>
-                      <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">Motivo de desviación 3</a>
-                      </li>
-                    </ul>
+                <div class="padding-bottom">
+                  <div ng-if="operation.lastStart" class="total-time"><strong>Inicio:</strong>
+                    <time>{{ (operation.start || operation.lastStart) | date:dateFormat }}</time>
                   </div>
-                <hr>
+                  <div ng-if="operation.end" class="total-time"><strong>Fin:</strong>
+                    <time>{{ operation.end | date:dateFormat }}</time>
+                  </div>
+                  <div class="padding-bottom" role="group">
+                    <button ng-if="!operation.playing"
+                            ng-click="startOperation(operation)"
+                            class="btn btn-success btn-sm ">
+                      <i class="fa fa-play"></i>
+                    </button>
+                    <button ng-if="operation.playing"
+                            ng-click="pauseOperation(operation)"
+                            class="btn btn-warning btn-sm">
+                      <i class="fa fa-pause"></i>
+                    </button>
+                    <button confirmed-click="finishOperation(operation)"
+                            ng-disabled="operation.playing || !operation.end"
+                            ng-confirm-click="¿Seguro que desea notificar esta operación?"
+                            class="btn btn-danger btn-sm">Notificación final
+                    </button>
+                  </div>
+
+                  <select class="form-control">
+                    <option selected value="">Motivos de desviación</option>
+                    <option value="operation.motivouno">1er motivo</option>
+                    <option value="operation.motivodos">2do motivo</option>
+                    <option value="operation.motivotres">3er motivo</option>
+                    <option value="operation.motivocuatro">4to motivo</option>
+                  </select>
+                </div>
+
                 <div class="row">
                   <div class="col-sm-10 col-xs-10">
-                    <input ng-model="operation.detailText" type="text" class="form-control non-border-rad" placeholder="Detalle">
+                    <input ng-model="operation.detailText" type="text" class="form-control" placeholder="Detalle">
                     <div class="well well-sm detail-text" ng-show="operation.detailText.length">
                       <p class="text-muted" ng-show="operation.detailText.length">{{operation.detailText}}</p>
                     </div>

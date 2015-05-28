@@ -70,20 +70,24 @@
   padding: 0 5px;
 }
 
-  div.padding-top {
-    margin-top: 5px;
-  }
+div.padding-top {
+  margin-top: 5px;
+}
 
-  .detail-text {
-    margin-top: 5px;
-    padding: 4px;
-  }
+.padding-bottom {
+  padding-bottom: 10px;
+}
 
-  .detail-text p {
-    font-size: 13px;
-    line-height: 15px;
-    max-height: 60px;
-    overflow: auto;
-    width: 100%;
-    word-wrap: break-word;
-  }
+.detail-text {
+  margin-top: 5px;
+  padding: 4px;
+}
+
+.detail-text p {
+  font-size: 13px;
+  line-height: 15px;
+  max-height: 60px;
+  overflow: auto;
+  width: 100%;
+  word-wrap: break-word;
+}
