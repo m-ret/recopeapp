@@ -71,6 +71,7 @@ angular.module('RecopeApp.controllers')
     }
 
     $scope.finishOperation = function(operation) {
+      console.log(operation);
       var operation = $scope.data.operations[$scope.data.operations.indexOf(operation)];
       operation.status = 3;
       ServiceData.updating();

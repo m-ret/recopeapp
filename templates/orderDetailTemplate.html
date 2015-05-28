@@ -76,7 +76,10 @@
                 <hr>
                 <div class="row">
                   <div class="col-sm-10 col-xs-10">
-                    <input type="text" class="form-control non-border-rad" placeholder="Detalle">
+                    <input ng-model="operation.detailText" type="text" class="form-control non-border-rad" placeholder="Detalle">
+                    <div class="well well-sm detail-text" ng-show="operation.detailText.length">
+                      <p class="text-muted" ng-show="operation.detailText.length">{{operation.detailText}}</p>
+                    </div>
                   </div>
                   <div class="col-sm-2 col-xs-2">
                     <button type="button" class="btn btn-primary btn-md print-button">
