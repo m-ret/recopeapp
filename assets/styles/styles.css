@@ -52,6 +52,10 @@ button[disabled] {
   font-weight: bold;
 }
 
+.title-brand:active {
+  color: #95A5A6;
+}
+
 .sync-btn {
   color: white;
   cursor: pointer;
