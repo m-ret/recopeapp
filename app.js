@@ -12,15 +12,15 @@ angular
 
   $stateProvider
     .state('orders', {
-      url: '/orders',
+      url: '/',
       controller: 'OrdersCtrl as ordersCtrl',
       templateUrl: 'templates/ordersData.html'
     })
     .state('orders.order', {
-      url: '/:id',
+      url: '/order/:id',
       controller: 'OrderDetailCtrl',
       templateUrl: 'templates/orderDetailTemplate.html'
     });
 
-  $urlRouterProvider.otherwise('/orders');
+  $urlRouterProvider.otherwise('/');
 })
