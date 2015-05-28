@@ -28,7 +28,6 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-sm-7">
-
                 <div class="padding-bottom">
                   <div ng-if="operation.lastStart" class="total-time"><strong>Inicio:</strong>
                     <time>{{ (operation.start || operation.lastStart) | date:dateFormat }}</time>
@@ -36,24 +35,27 @@
                   <div ng-if="operation.end" class="total-time"><strong>Fin:</strong>
                     <time>{{ operation.end | date:dateFormat }}</time>
                   </div>
-                  <div class="padding-bottom" role="group">
-                    <button ng-if="!operation.playing"
-                            ng-click="startOperation(operation)"
-                            class="btn btn-success btn-sm ">
-                      <i class="fa fa-play"></i>
-                    </button>
-                    <button ng-if="operation.playing"
-                            ng-click="pauseOperation(operation)"
-                            class="btn btn-warning btn-sm">
-                      <i class="fa fa-pause"></i>
-                    </button>
-                    <button confirmed-click="finishOperation(operation)"
-                            ng-disabled="operation.playing || !operation.end"
-                            ng-confirm-click="¿Seguro que desea notificar esta operación?"
-                            class="btn btn-danger btn-sm">Notificación final
-                    </button>
+                  <div class="row padding-bottom" role="group">
+                    <div class="col-sm-2">
+                      <button ng-if="!operation.playing"
+                              ng-click="startOperation(operation)"
+                              class="btn btn-success btn-sm ">
+                        <i class="fa fa-play"></i>
+                      </button>
+                      <button ng-if="operation.playing"
+                              ng-click="pauseOperation(operation)"
+                              class="btn btn-block btn-warning btn-sm">
+                        <i class="fa fa-pause"></i>
+                      </button>                  
+                    </div>
+                    <div class="col-sm-10">
+                      <button confirmed-click="finishOperation(operation)"
+                              ng-disabled="operation.playing || !operation.end"
+                              ng-confirm-click="¿Seguro que desea notificar esta operación?"
+                              class="btn btn-block btn-danger btn-sm">Notificación final
+                      </button>
+                    </div>
                   </div>
-
                   <select class="form-control">
                     <option selected value="">Motivos de desviación</option>
                     <option value="operation.motivouno">1er motivo</option>
@@ -72,10 +74,26 @@
                     <option value="operation.actividad7">Extras nocturnas dobles Actividades Alcance</option>
                   </select>
                 </div>
-
+                <div class="form-group" data-ng-repeat="choice in choices">
+                  <label for="choice" ng-show="showChoiceLabel(choice)">Choices</label>
+                  <button ng-show="showAddChoice(choice)" ng-click="addNewChoice()">Add another choice</button>
+                  <input type="text" ng-model="choice.name" name="" placeholder="Enter a restaurant name">
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 col-xs-12">
+                    <button class="btn btn-default btn-block" ng-click="operations.push({})">Add another choice</button>
+                    <div ng-repeat="operation in operations">
+                      <input ng-model="operations[$index].detailText" type="text" class="form-control" placeholder="Detalle">
+                      <div class="well well-sm detail-text" ng-show="operation.detailText.length">
+                        <p class="text-muted" ng-show="operation.detailText.length">{{operation.detailText}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr>
                 <div class="row">
                   <div class="col-sm-10 col-xs-10">
-                    <input ng-model="operation.detailText" type="text" class="form-control" placeholder="Agregar Detalle">
+                    <input ng-model="operation.detailText" type="text" class="form-control" placeholder="Detalle">
                     <div class="well well-sm detail-text" ng-show="operation.detailText.length">
                       <p class="text-muted" ng-show="operation.detailText.length">{{operation.detailText}}</p>
                     </div>
@@ -83,7 +101,7 @@
                   <div class="col-sm-2 col-xs-2">
                     <button type="button" class="btn btn-primary btn-md print-button">
                       <i class="fa fa-print"></i></button>
-                  </div>
+                  </div>           
                 </div>
               </div>
               <div class="col-sm-5">

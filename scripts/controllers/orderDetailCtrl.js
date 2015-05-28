@@ -1,6 +1,8 @@
 angular.module('RecopeApp.controllers')
   .controller('OrderDetailCtrl', function($rootScope, $scope, $stateParams, ServiceData) {
 
+    $scope.operations = [];
+
     $scope.statuses = {
       0: 'Sin comenzar',
       1: 'Iniciada',
