@@ -5,7 +5,8 @@ angular
     'LocalStorageModule',
     'RecopeApp.controllers',
     'RecopeApp.services',
-    'RecopeApp.filters'
+    'RecopeApp.filters',
+    'RecopeApp.directives'
   ])
 
 .config(function($stateProvider, $urlRouterProvider) {
