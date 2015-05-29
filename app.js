@@ -17,7 +17,7 @@ angular
       templateUrl: 'templates/ordersData.html'
     })
     .state('orders.order', {
-      url: '/order/:id',
+      url: ':id',
       controller: 'OrderDetailCtrl',
       templateUrl: 'templates/orderDetailTemplate.html'
     });

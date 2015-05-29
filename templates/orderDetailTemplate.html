@@ -44,7 +44,7 @@
                       </button>
                       <button ng-if="operation.playing"
                               ng-click="pauseOperation(operation)"
-                              class="btn btn-block btn-warning btn-sm">
+                              class="btn btn-warning btn-sm">
                         <i class="fa fa-pause"></i>
                       </button>
                     </div>
@@ -74,36 +74,18 @@
                     <option value="operation.actividad7">Extras nocturnas dobles Actividades Alcance</option>
                   </select>
                 </div>
-                <div class="form-group" data-ng-repeat="choice in choices">
-                  <label for="choice" ng-show="showChoiceLabel(choice)">Choices</label>
-                  <button ng-show="showAddChoice(choice)" ng-click="addNewChoice()">Add another choice</button>
-                  <input type="text" ng-model="choice.name" name="" placeholder="Enter a restaurant name">
-                </div>
                 <div class="row">
                   <div class="col-sm-12 col-xs-12">
-                    <button class="btn btn-default btn-block" ng-click="operations.push({})">Add another choice</button>
+                    <button class="btn btn-default btn-block" ng-click="operations.push({})">Agregar especificación</button>
                     <div ng-repeat="operation in operations">
                       <div class="padding-top">
                         <input ng-model="operations[$index].detailText" type="text"
-                               class="form-control" placeholder="Detalle">
+                               class="form-control" placeholder="Especificación">
                       </div>
                       <div class="well well-sm detail-text" ng-show="operation.detailText.length">
                         <p class="text-muted" ng-show="operation.detailText.length">{{operation.detailText}}</p>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-10 col-xs-10">
-                    <input ng-model="operation.detailText" type="text" class="form-control" placeholder="Detalle">
-                    <div class="well well-sm detail-text" ng-show="operation.detailText.length">
-                      <p class="text-muted" ng-show="operation.detailText.length">{{operation.detailText}}</p>
-                    </div>
-                  </div>
-                  <div class="col-sm-2 col-xs-2">
-                    <button type="button" class="btn btn-primary btn-md print-button">
-                      <i class="fa fa-print"></i></button>
                   </div>
                 </div>
               </div>
@@ -118,6 +100,18 @@
                 <div ng-if="operation.partialTime" class="total-time">
                   <strong>Tempo parcial:</strong>
                     <span ng-class="{ 'text-color-2' : operation.partialTime > operation.duration }">{{ timeFormatter(operation.partialTime) }}</span>
+                  <hr>
+                  <div>
+                    <input ng-model="operation.detailText" type="text" class="form-control" placeholder="Detalle">
+                    <div class="well well-sm detail-text" ng-show="operation.detailText.length">
+                      <p class="text-muted" ng-show="operation.detailText.length">{{operation.detailText}}</p>
+                    </div>
+                  </div>
+                  <div>
+                  <hr>
+                    <button type="button" class="btn btn-primary btn-block btn-md print-button">
+                      <i class="fa fa-print"></i></button>
+                  </div>
                 </div>
               </div>
             </div>
