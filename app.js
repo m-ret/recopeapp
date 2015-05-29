@@ -10,7 +10,6 @@ angular
   ])
 
 .config(function($stateProvider, $urlRouterProvider) {
-
   $stateProvider
     .state('orders', {
       url: '/',

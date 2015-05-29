@@ -1,4 +1,4 @@
-<div class="order-header">Detalle de la orden
+<div class="order-header">Detalle de la orden {{data.id}}
   <a ui-sref="orders" class="close-btn fa fa-times-circle"></a>
 </div>
 <div class="module-container order-container">
@@ -7,10 +7,10 @@
       <div class="col-sm-4 col-padding">
         <div class="panel panel-default panel-edited">
           <div class="panel-heading headings">
-            <h4>Orden {{data.order}}</h4>
+            <h4>Orden</h4>
           </div>
           <div class="panel-body">
-            <p>{{data.header}}</p>
+            <p>{{data.descripcionCabecera}} - {{data.grupoPlanificador}}</p>
             <table class="table">
               <tr ng-repeat="detail in data.details">
                 <th>{{detail.label}}</th>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('RecopeApp.services')
-  .factory('OrderFactory', function($q) {
+  .factory('OrderFactory', function($q, $http) {
 
   	return {
   		orders: function() {
