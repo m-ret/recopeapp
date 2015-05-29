@@ -156,4 +156,715 @@
     "duration" : "60",
     "status"   : "0"
   }]
+}, {
+  "id"         : "2",
+  "order"      : "000002",
+  "header"     : "Detalle completo del detalle de cabecera de la orden",
+  "group"      : "Grupo Planificador Alajuela",
+    "details"    : [{
+    "label": "Supervisor",
+    "value": "Carlos Mack"
+  }, {
+    "label": "Responsable",
+    "value": "Marcelo Retana"
+  }, {
+    "label": "Solicitante",
+    "value": "Recope"
+  }, {
+    "label": "Unidad ejecutora",
+    "value": "Grupo Planificador Belén"
+  }, {
+    "label": "Centro de Costo",
+    "value": "B-4"
+  }, {
+    "label": "Plantel",
+    "value": "Barreal"
+  }, {
+    "label": "Área funcional",
+    "value": "Programación"
+  }, {
+    "label": "Área de empresa",
+    "value": "Oficina"
+  }, {
+    "label": "Ubicación Técnica",
+    "value": "Taller"
+  }, {
+    "label": "Equipo superior",
+    "value": "foo"
+  }, {
+    "label": "Local",
+    "value": "12A"
+  }, {
+    "label": "Ubicación",
+    "value": "Belén"
+  }, {
+    "label": "Equipo",
+    "value": "Ninjas"
+  }, {
+    "label": "Dato técnico",
+    "value": "EH-2138"
+  }, {
+    "label": "Prioridad",
+    "value": "Alta"
+  }, {
+    "label": "Actividad PM",
+    "value": "900"
+  }, {
+    "label": "Fecha prox. Mtto",
+    "value": "17 de julio"
+  }],
+    "mediciones" : [{
+    "label": "Presión de la máquina",
+    "value": "7 mb/s"
+  }, {
+    "label": "Medidor de agua",
+    "value": "10 tons"
+  }, {
+    "label": "Cilindros por metro cúbico",
+    "value": "12"
+  }, {
+    "label": "Calibración de presión",
+    "value": "57 grados"
+  }],
+  "operations" : [{
+    "title"    : "Operación 4859301",
+    "duration" : "3600",
+    "status"   : "0"
+  }, {
+    "title"    : "Operación 84913839",
+    "duration" : "60",
+    "status"   : "0"
+  }]
+}, {
+  "id"         : "2",
+  "order"      : "000002",
+  "header"     : "Detalle completo del detalle de cabecera de la orden",
+  "group"      : "Grupo Planificador Alajuela",
+    "details"    : [{
+    "label": "Supervisor",
+    "value": "Carlos Mack"
+  }, {
+    "label": "Responsable",
+    "value": "Marcelo Retana"
+  }, {
+    "label": "Solicitante",
+    "value": "Recope"
+  }, {
+    "label": "Unidad ejecutora",
+    "value": "Grupo Planificador Belén"
+  }, {
+    "label": "Centro de Costo",
+    "value": "B-4"
+  }, {
+    "label": "Plantel",
+    "value": "Barreal"
+  }, {
+    "label": "Área funcional",
+    "value": "Programación"
+  }, {
+    "label": "Área de empresa",
+    "value": "Oficina"
+  }, {
+    "label": "Ubicación Técnica",
+    "value": "Taller"
+  }, {
+    "label": "Equipo superior",
+    "value": "foo"
+  }, {
+    "label": "Local",
+    "value": "12A"
+  }, {
+    "label": "Ubicación",
+    "value": "Belén"
+  }, {
+    "label": "Equipo",
+    "value": "Ninjas"
+  }, {
+    "label": "Dato técnico",
+    "value": "EH-2138"
+  }, {
+    "label": "Prioridad",
+    "value": "Alta"
+  }, {
+    "label": "Actividad PM",
+    "value": "900"
+  }, {
+    "label": "Fecha prox. Mtto",
+    "value": "17 de julio"
+  }],
+    "mediciones" : [{
+    "label": "Presión de la máquina",
+    "value": "7 mb/s"
+  }, {
+    "label": "Medidor de agua",
+    "value": "10 tons"
+  }, {
+    "label": "Cilindros por metro cúbico",
+    "value": "12"
+  }, {
+    "label": "Calibración de presión",
+    "value": "57 grados"
+  }],
+  "operations" : [{
+    "title"    : "Operación 4859301",
+    "duration" : "3600",
+    "status"   : "0"
+  }, {
+    "title"    : "Operación 84913839",
+    "duration" : "60",
+    "status"   : "0"
+  }]
+}, {
+  "id"         : "2",
+  "order"      : "000002",
+  "header"     : "Detalle completo del detalle de cabecera de la orden",
+  "group"      : "Grupo Planificador Alajuela",
+    "details"    : [{
+    "label": "Supervisor",
+    "value": "Carlos Mack"
+  }, {
+    "label": "Responsable",
+    "value": "Marcelo Retana"
+  }, {
+    "label": "Solicitante",
+    "value": "Recope"
+  }, {
+    "label": "Unidad ejecutora",
+    "value": "Grupo Planificador Belén"
+  }, {
+    "label": "Centro de Costo",
+    "value": "B-4"
+  }, {
+    "label": "Plantel",
+    "value": "Barreal"
+  }, {
+    "label": "Área funcional",
+    "value": "Programación"
+  }, {
+    "label": "Área de empresa",
+    "value": "Oficina"
+  }, {
+    "label": "Ubicación Técnica",
+    "value": "Taller"
+  }, {
+    "label": "Equipo superior",
+    "value": "foo"
+  }, {
+    "label": "Local",
+    "value": "12A"
+  }, {
+    "label": "Ubicación",
+    "value": "Belén"
+  }, {
+    "label": "Equipo",
+    "value": "Ninjas"
+  }, {
+    "label": "Dato técnico",
+    "value": "EH-2138"
+  }, {
+    "label": "Prioridad",
+    "value": "Alta"
+  }, {
+    "label": "Actividad PM",
+    "value": "900"
+  }, {
+    "label": "Fecha prox. Mtto",
+    "value": "17 de julio"
+  }],
+    "mediciones" : [{
+    "label": "Presión de la máquina",
+    "value": "7 mb/s"
+  }, {
+    "label": "Medidor de agua",
+    "value": "10 tons"
+  }, {
+    "label": "Cilindros por metro cúbico",
+    "value": "12"
+  }, {
+    "label": "Calibración de presión",
+    "value": "57 grados"
+  }],
+  "operations" : [{
+    "title"    : "Operación 4859301",
+    "duration" : "3600",
+    "status"   : "0"
+  }, {
+    "title"    : "Operación 84913839",
+    "duration" : "60",
+    "status"   : "0"
+  }]
+}, {
+  "id"         : "2",
+  "order"      : "000002",
+  "header"     : "Detalle completo del detalle de cabecera de la orden",
+  "group"      : "Grupo Planificador Alajuela",
+    "details"    : [{
+    "label": "Supervisor",
+    "value": "Carlos Mack"
+  }, {
+    "label": "Responsable",
+    "value": "Marcelo Retana"
+  }, {
+    "label": "Solicitante",
+    "value": "Recope"
+  }, {
+    "label": "Unidad ejecutora",
+    "value": "Grupo Planificador Belén"
+  }, {
+    "label": "Centro de Costo",
+    "value": "B-4"
+  }, {
+    "label": "Plantel",
+    "value": "Barreal"
+  }, {
+    "label": "Área funcional",
+    "value": "Programación"
+  }, {
+    "label": "Área de empresa",
+    "value": "Oficina"
+  }, {
+    "label": "Ubicación Técnica",
+    "value": "Taller"
+  }, {
+    "label": "Equipo superior",
+    "value": "foo"
+  }, {
+    "label": "Local",
+    "value": "12A"
+  }, {
+    "label": "Ubicación",
+    "value": "Belén"
+  }, {
+    "label": "Equipo",
+    "value": "Ninjas"
+  }, {
+    "label": "Dato técnico",
+    "value": "EH-2138"
+  }, {
+    "label": "Prioridad",
+    "value": "Alta"
+  }, {
+    "label": "Actividad PM",
+    "value": "900"
+  }, {
+    "label": "Fecha prox. Mtto",
+    "value": "17 de julio"
+  }],
+    "mediciones" : [{
+    "label": "Presión de la máquina",
+    "value": "7 mb/s"
+  }, {
+    "label": "Medidor de agua",
+    "value": "10 tons"
+  }, {
+    "label": "Cilindros por metro cúbico",
+    "value": "12"
+  }, {
+    "label": "Calibración de presión",
+    "value": "57 grados"
+  }],
+  "operations" : [{
+    "title"    : "Operación 4859301",
+    "duration" : "3600",
+    "status"   : "0"
+  }, {
+    "title"    : "Operación 84913839",
+    "duration" : "60",
+    "status"   : "0"
+  }]
+}, {
+  "id"         : "2",
+  "order"      : "000002",
+  "header"     : "Detalle completo del detalle de cabecera de la orden",
+  "group"      : "Grupo Planificador Alajuela",
+    "details"    : [{
+    "label": "Supervisor",
+    "value": "Carlos Mack"
+  }, {
+    "label": "Responsable",
+    "value": "Marcelo Retana"
+  }, {
+    "label": "Solicitante",
+    "value": "Recope"
+  }, {
+    "label": "Unidad ejecutora",
+    "value": "Grupo Planificador Belén"
+  }, {
+    "label": "Centro de Costo",
+    "value": "B-4"
+  }, {
+    "label": "Plantel",
+    "value": "Barreal"
+  }, {
+    "label": "Área funcional",
+    "value": "Programación"
+  }, {
+    "label": "Área de empresa",
+    "value": "Oficina"
+  }, {
+    "label": "Ubicación Técnica",
+    "value": "Taller"
+  }, {
+    "label": "Equipo superior",
+    "value": "foo"
+  }, {
+    "label": "Local",
+    "value": "12A"
+  }, {
+    "label": "Ubicación",
+    "value": "Belén"
+  }, {
+    "label": "Equipo",
+    "value": "Ninjas"
+  }, {
+    "label": "Dato técnico",
+    "value": "EH-2138"
+  }, {
+    "label": "Prioridad",
+    "value": "Alta"
+  }, {
+    "label": "Actividad PM",
+    "value": "900"
+  }, {
+    "label": "Fecha prox. Mtto",
+    "value": "17 de julio"
+  }],
+    "mediciones" : [{
+    "label": "Presión de la máquina",
+    "value": "7 mb/s"
+  }, {
+    "label": "Medidor de agua",
+    "value": "10 tons"
+  }, {
+    "label": "Cilindros por metro cúbico",
+    "value": "12"
+  }, {
+    "label": "Calibración de presión",
+    "value": "57 grados"
+  }],
+  "operations" : [{
+    "title"    : "Operación 4859301",
+    "duration" : "3600",
+    "status"   : "0"
+  }, {
+    "title"    : "Operación 84913839",
+    "duration" : "60",
+    "status"   : "0"
+  }]
+}, {
+  "id"         : "2",
+  "order"      : "000002",
+  "header"     : "Detalle completo del detalle de cabecera de la orden",
+  "group"      : "Grupo Planificador Alajuela",
+    "details"    : [{
+    "label": "Supervisor",
+    "value": "Carlos Mack"
+  }, {
+    "label": "Responsable",
+    "value": "Marcelo Retana"
+  }, {
+    "label": "Solicitante",
+    "value": "Recope"
+  }, {
+    "label": "Unidad ejecutora",
+    "value": "Grupo Planificador Belén"
+  }, {
+    "label": "Centro de Costo",
+    "value": "B-4"
+  }, {
+    "label": "Plantel",
+    "value": "Barreal"
+  }, {
+    "label": "Área funcional",
+    "value": "Programación"
+  }, {
+    "label": "Área de empresa",
+    "value": "Oficina"
+  }, {
+    "label": "Ubicación Técnica",
+    "value": "Taller"
+  }, {
+    "label": "Equipo superior",
+    "value": "foo"
+  }, {
+    "label": "Local",
+    "value": "12A"
+  }, {
+    "label": "Ubicación",
+    "value": "Belén"
+  }, {
+    "label": "Equipo",
+    "value": "Ninjas"
+  }, {
+    "label": "Dato técnico",
+    "value": "EH-2138"
+  }, {
+    "label": "Prioridad",
+    "value": "Alta"
+  }, {
+    "label": "Actividad PM",
+    "value": "900"
+  }, {
+    "label": "Fecha prox. Mtto",
+    "value": "17 de julio"
+  }],
+    "mediciones" : [{
+    "label": "Presión de la máquina",
+    "value": "7 mb/s"
+  }, {
+    "label": "Medidor de agua",
+    "value": "10 tons"
+  }, {
+    "label": "Cilindros por metro cúbico",
+    "value": "12"
+  }, {
+    "label": "Calibración de presión",
+    "value": "57 grados"
+  }],
+  "operations" : [{
+    "title"    : "Operación 4859301",
+    "duration" : "3600",
+    "status"   : "0"
+  }, {
+    "title"    : "Operación 84913839",
+    "duration" : "60",
+    "status"   : "0"
+  }]
+}, {
+  "id"         : "2",
+  "order"      : "000002",
+  "header"     : "Detalle completo del detalle de cabecera de la orden",
+  "group"      : "Grupo Planificador Alajuela",
+    "details"    : [{
+    "label": "Supervisor",
+    "value": "Carlos Mack"
+  }, {
+    "label": "Responsable",
+    "value": "Marcelo Retana"
+  }, {
+    "label": "Solicitante",
+    "value": "Recope"
+  }, {
+    "label": "Unidad ejecutora",
+    "value": "Grupo Planificador Belén"
+  }, {
+    "label": "Centro de Costo",
+    "value": "B-4"
+  }, {
+    "label": "Plantel",
+    "value": "Barreal"
+  }, {
+    "label": "Área funcional",
+    "value": "Programación"
+  }, {
+    "label": "Área de empresa",
+    "value": "Oficina"
+  }, {
+    "label": "Ubicación Técnica",
+    "value": "Taller"
+  }, {
+    "label": "Equipo superior",
+    "value": "foo"
+  }, {
+    "label": "Local",
+    "value": "12A"
+  }, {
+    "label": "Ubicación",
+    "value": "Belén"
+  }, {
+    "label": "Equipo",
+    "value": "Ninjas"
+  }, {
+    "label": "Dato técnico",
+    "value": "EH-2138"
+  }, {
+    "label": "Prioridad",
+    "value": "Alta"
+  }, {
+    "label": "Actividad PM",
+    "value": "900"
+  }, {
+    "label": "Fecha prox. Mtto",
+    "value": "17 de julio"
+  }],
+    "mediciones" : [{
+    "label": "Presión de la máquina",
+    "value": "7 mb/s"
+  }, {
+    "label": "Medidor de agua",
+    "value": "10 tons"
+  }, {
+    "label": "Cilindros por metro cúbico",
+    "value": "12"
+  }, {
+    "label": "Calibración de presión",
+    "value": "57 grados"
+  }],
+  "operations" : [{
+    "title"    : "Operación 4859301",
+    "duration" : "3600",
+    "status"   : "0"
+  }, {
+    "title"    : "Operación 84913839",
+    "duration" : "60",
+    "status"   : "0"
+  }]
+}, {
+  "id"         : "2",
+  "order"      : "000002",
+  "header"     : "Detalle completo del detalle de cabecera de la orden",
+  "group"      : "Grupo Planificador Alajuela",
+    "details"    : [{
+    "label": "Supervisor",
+    "value": "Carlos Mack"
+  }, {
+    "label": "Responsable",
+    "value": "Marcelo Retana"
+  }, {
+    "label": "Solicitante",
+    "value": "Recope"
+  }, {
+    "label": "Unidad ejecutora",
+    "value": "Grupo Planificador Belén"
+  }, {
+    "label": "Centro de Costo",
+    "value": "B-4"
+  }, {
+    "label": "Plantel",
+    "value": "Barreal"
+  }, {
+    "label": "Área funcional",
+    "value": "Programación"
+  }, {
+    "label": "Área de empresa",
+    "value": "Oficina"
+  }, {
+    "label": "Ubicación Técnica",
+    "value": "Taller"
+  }, {
+    "label": "Equipo superior",
+    "value": "foo"
+  }, {
+    "label": "Local",
+    "value": "12A"
+  }, {
+    "label": "Ubicación",
+    "value": "Belén"
+  }, {
+    "label": "Equipo",
+    "value": "Ninjas"
+  }, {
+    "label": "Dato técnico",
+    "value": "EH-2138"
+  }, {
+    "label": "Prioridad",
+    "value": "Alta"
+  }, {
+    "label": "Actividad PM",
+    "value": "900"
+  }, {
+    "label": "Fecha prox. Mtto",
+    "value": "17 de julio"
+  }],
+    "mediciones" : [{
+    "label": "Presión de la máquina",
+    "value": "7 mb/s"
+  }, {
+    "label": "Medidor de agua",
+    "value": "10 tons"
+  }, {
+    "label": "Cilindros por metro cúbico",
+    "value": "12"
+  }, {
+    "label": "Calibración de presión",
+    "value": "57 grados"
+  }],
+  "operations" : [{
+    "title"    : "Operación 4859301",
+    "duration" : "3600",
+    "status"   : "0"
+  }, {
+    "title"    : "Operación 84913839",
+    "duration" : "60",
+    "status"   : "0"
+  }]
+}, {
+  "id"         : "2",
+  "order"      : "000002",
+  "header"     : "Detalle completo del detalle de cabecera de la orden",
+  "group"      : "Grupo Planificador Alajuela",
+    "details"    : [{
+    "label": "Supervisor",
+    "value": "Carlos Mack"
+  }, {
+    "label": "Responsable",
+    "value": "Marcelo Retana"
+  }, {
+    "label": "Solicitante",
+    "value": "Recope"
+  }, {
+    "label": "Unidad ejecutora",
+    "value": "Grupo Planificador Belén"
+  }, {
+    "label": "Centro de Costo",
+    "value": "B-4"
+  }, {
+    "label": "Plantel",
+    "value": "Barreal"
+  }, {
+    "label": "Área funcional",
+    "value": "Programación"
+  }, {
+    "label": "Área de empresa",
+    "value": "Oficina"
+  }, {
+    "label": "Ubicación Técnica",
+    "value": "Taller"
+  }, {
+    "label": "Equipo superior",
+    "value": "foo"
+  }, {
+    "label": "Local",
+    "value": "12A"
+  }, {
+    "label": "Ubicación",
+    "value": "Belén"
+  }, {
+    "label": "Equipo",
+    "value": "Ninjas"
+  }, {
+    "label": "Dato técnico",
+    "value": "EH-2138"
+  }, {
+    "label": "Prioridad",
+    "value": "Alta"
+  }, {
+    "label": "Actividad PM",
+    "value": "900"
+  }, {
+    "label": "Fecha prox. Mtto",
+    "value": "17 de julio"
+  }],
+    "mediciones" : [{
+    "label": "Presión de la máquina",
+    "value": "7 mb/s"
+  }, {
+    "label": "Medidor de agua",
+    "value": "10 tons"
+  }, {
+    "label": "Cilindros por metro cúbico",
+    "value": "12"
+  }, {
+    "label": "Calibración de presión",
+    "value": "57 grados"
+  }],
+  "operations" : [{
+    "title"    : "Operación 4859301",
+    "duration" : "3600",
+    "status"   : "0"
+  }, {
+    "title"    : "Operación 84913839",
+    "duration" : "60",
+    "status"   : "0"
+  }]
 }]
