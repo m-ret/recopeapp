@@ -1,0 +1,11 @@
+{
+  "name": "Recope-Ordenes",
+  "version": "0.1.0",
+  "description": "Back End para consumir web services de Recope.",
+  "author": "Alberto Cole",
+  "dependencies": {
+    "hapi": "8.2.0",
+    "soap": "0.7.0",
+    "lodash": "3.3.1"
+  }
+}
