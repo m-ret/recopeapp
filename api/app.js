@@ -12,9 +12,59 @@ server.connection({
 // Add the route
 
 server.route({
+  method: 'POST',
+  path: '/crearOrden',
+  handler: function(request, reply) {
+    var soap = require('soap');
+    var url = 'os_RespCrearOrdenMantResp.wsdl';
+    soap.createClient(url, function(err, client) {
+      client.setSecurity(new soap.BasicAuthSecurity('USRCP_HW', 'usrcp2012'));
+
+      var xml = {
+        CONF_NO: 0,
+        ORDERID: '110000000202',
+        OPERATION: '0010',
+        SUB_OPER: '',
+        COMPLETE: '',
+        DEV_REASON: '',
+        CONF_TEXT: 'New Notif SOAP BHL XXX',
+        PLANT: '',
+        WORK_CNTR: 'SUP_MTO',
+        ACT_WORK:'1',
+        UN_WORK: 'H',
+        UN_WORK_ISO: '',
+        EXEC_START_DATE: '2015-05-29',
+        EXEC_START_TIME: '13:00:00',
+        EXEC_FIN_DATE: '2015-05-29',
+        EXEC_FIN_TIME: '15:00:00',
+        ACT_TYPE: '',
+        CALC_MOTIVE: '',
+        ACT_WORK_2:''
+      };
+
+      var parser = require('js2xmlparser');
+      console.log(parser('item', xml).replace('<?xml version="1.0" encoding="UTF-8"?>\n', ''));
+      client.os_RespCrearOrdenMantResp({
+        TIMETICKETS: {item: xml}
+      }, function(err, result) {
+        console.log(err);
+        console.log(result);
+        if (err) {
+          reply({
+            err:err
+          });
+        } else {
+          reply(result);
+        }
+      });
+    });
+  }
+});
+
+server.route({
   method: 'GET',
   path:'/ordenes',
-  handler: function (request, reply) {
+  handler: function(request, reply) {
     console.log('Cargando Ordenes...');
     console.time('Cargando Ordenes...');
     var soap = require('soap');
