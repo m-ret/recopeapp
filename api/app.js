@@ -12,6 +12,33 @@ server.connection({
 // Add the route
 
 server.route({
+  method: 'GET',
+  path: '/consCodVal',
+  handler: function(request, reply) {
+    var soap = require('soap');
+    var url = 'os_ConsCodVal.wsdl';
+    soap.createClient(url, function(err, client) {
+      client.setSecurity(new soap.BasicAuthSecurity('USRCP_HW', 'usrcp2012'));
+      client.os_ConsCodVal({
+        CodGrupos: {
+          CodGrupo: 'ZGC00002'
+        }
+      }, function(err, result) {
+        console.log(err);
+        console.log(result);
+        if (err) {
+          reply({
+            err:err
+          });
+        } else {
+          reply(result);
+        }
+      });
+    });
+  }
+});
+
+server.route({
   method: 'POST',
   path: '/crearOrden',
   handler: function(request, reply) {
@@ -42,8 +69,6 @@ server.route({
         ACT_WORK_2:''
       };
 
-      var parser = require('js2xmlparser');
-      console.log(parser('item', xml).replace('<?xml version="1.0" encoding="UTF-8"?>\n', ''));
       client.os_RespCrearOrdenMantResp({
         TIMETICKETS: {item: xml}
       }, function(err, result) {
