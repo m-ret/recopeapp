@@ -1,5 +1,7 @@
 var Hapi = require('hapi'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    recopeFunciones = require('./recope-funciones.js'),
+    async = require('async');
 
 // Create a server with a host and port
 var server = new Hapi.Server();
@@ -8,8 +10,86 @@ server.connection({
   port: 8880,
   routes: { cors: true }
 });
+// Add the route
+server.route({
+  method: 'GET',
+  path: '/respDocMed',
+  handler: function(request, reply) {
+    var soap = require('soap');
+    var url = 'os_RespDocMed.wsdl';
+    soap.createClient(url, function(err, client) {
+      client.setSecurity(new soap.BasicAuthSecurity('USRCP_HW', 'usrcp2012'));
+      client.os_RespDocMed({
+        DetalleDocuMed: {
+          ORDERID: '110000000202',
+          POS_ID: '',
+          MEASUREMENT_POINT: '250',
+          SECONDARY_INDEX: '',
+          READING_DATE: '20150531',
+          READING_TIME: '090000',
+          SHORT_TEXT: 'TEST FROM SOAP BHL',
+          READER: '',
+          ORIGIN_INDICATOR: '',
+          READING_AFTER_ACTION: '',
+          RECORDED_VALUE: '10',
+          RECORDED_UNIT: 'H',
+          DIFFERENCE_READING: '',
+          CODE_CATALOGUE: '',
+          CODE_GROUP: '',
+          VALUATION_CODE: '',
+          CODE_VERSION: '',
+          USER_DATA: '',
+          CHECK_CUSTOM_DUPREC: '',
+          WITH_DIALOG_SCREEN: '',
+          PREPARE_UPDATE: '',
+          COMMIT_WORK: 'X',
+          WAIT_AFTER_COMMIT: 'X',
+          CREATE_NOTIFICATION: '',
+          NOTIFICATION_TYPE: '',
+          NOTIFICATION_PRIO: ''
+        }
+      }, function(err, result) {
+        console.log(err);
+        console.log(result);
+        if (err) {
+          reply({
+            err:err
+          });
+        } else {
+          reply(result);
+        }
+      });
+    });
+  }
+});
 
 // Add the route
+server.route({
+  method: 'GET',
+  path: '/consPtosMed/{equipo}',
+  handler: function(request, reply) {
+    var soap = require('soap');
+    var url = 'os_ConsPtosMed.wsdl';
+    soap.createClient(url, function(err, client) {
+      client.setSecurity(new soap.BasicAuthSecurity('USRCP_HW', 'usrcp2012'));
+      client.os_ConsPtosMed({
+        Equipos: {
+          Equipo: request.params.equipo
+        }
+      }, function(err, result) {
+        console.log(err);
+        console.log(result);
+        if (err) {
+          reply({
+            err:err
+          });
+        } else {
+          reply(result);
+        }
+      });
+    });
+  }
+});
 
 server.route({
   method: 'GET',
@@ -99,7 +179,7 @@ server.route({
       client.os_OrderGetDetailResp({
         PLANT: '6000',
         PLANGROUP: 'E10',
-        START_DATE: '2014-11-26'
+        START_DATE: '2015-01-04'
       }, function(err, result) {
         var ordenes = [],
             operaciones = [];
@@ -123,6 +203,7 @@ server.route({
             id: opTx.ORDERID,
             descripcionCabecera: opTx.DESC_TEXT,
             grupoPlanificador: opTx.DESC_PLANT,
+            equipo: opTx.EQUIPMENT,
             details: [
               {
                 label: 'Descripcion del Equipo',
@@ -169,34 +250,28 @@ server.route({
                 value: opTx.FEC_PROX_MANT
               }
             ],
-            mediciones : [{
-              label: "Presión de la máquina",
-              value: "5 mb/s"
-            }, {
-              label: "Medidor de agua",
-              value: "7 tons"
-            }, {
-              label: "Cilindros por metro cúbico",
-              value: "7"
-            }, {
-              label: "Calibración de presión",
-              value: "45 grados"
-            }],
-            operations : [{
-              title    : "Operación 4859301",
-              duration : "3600",
-              status   : "0"
-            }, {
-              title    : "Operación 84913839",
-              duration : "60",
-              status   : "0"
-            }],
+            mediciones : [],
             operations: _.filter(operaciones, {orderId: opTx.ORDERID.trim()})
           });
         });
-        console.timeEnd('Cargando Ordenes...');
-        reply(ordenes);
 
+        var i = 0;
+        async.each(ordenes, function(item, callback) {
+          recopeFunciones.buscarMedicion(item.equipo.trim()).then(function(mediciones) {
+            i++;
+            item.mediciones = mediciones;
+            console.log(i);
+            callback();
+          }, function(err) {
+            //console.log(JSON.stringify(err.root));
+            console.log('error buscando Equipo con '+ item.equipo.trim());
+            callback();
+          });
+        }, function(err) {
+          //console.log(err);
+          console.timeEnd('Cargando Ordenes...');
+          reply(ordenes);
+        });
       });
     });
   }
