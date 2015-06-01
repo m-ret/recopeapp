@@ -5,7 +5,18 @@ angular.module('RecopeApp.services', [])
       getLastUpdate: $window.localStorage.getItem('lastUpdate'),
       data: JSON.parse($window.localStorage.getItem('appData')),
       syncro: syncro,
-      updating: updating
+      updating: updating,
+      finishOperation: function(operation) {
+        $http.post('http://localhost:8880/crearOrden', {
+          order: operation.orderId,
+          operation: operation.actividad,
+          title:
+        }).then(function (response) {
+          this.updating();
+        }.bind(this), function(err) {
+          console.log(err);
+        });
+      }
     };
 
     return declaredService;

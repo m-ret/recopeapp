@@ -101,7 +101,7 @@ server.route({
       client.setSecurity(new soap.BasicAuthSecurity('USRCP_HW', 'usrcp2012'));
       client.os_ConsCodVal({
         CodGrupos: {
-          CodGrupo: 'ZGC00002'
+          CodGrupo: 'ZPM00001'
         }
       }, function(err, result) {
         console.log(err);
@@ -129,12 +129,12 @@ server.route({
 
       var xml = {
         CONF_NO: 0,
-        ORDERID: '110000000202',
-        OPERATION: '0010',
+        ORDERID: request.payload.order,
+        OPERATION: request.payload.operation,
         SUB_OPER: '',
         COMPLETE: '',
         DEV_REASON: '',
-        CONF_TEXT: 'New Notif SOAP BHL XXX',
+        CONF_TEXT: request.payload.title,
         PLANT: '',
         WORK_CNTR: 'SUP_MTO',
         ACT_WORK:'1',
