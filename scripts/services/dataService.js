@@ -10,7 +10,7 @@ angular.module('RecopeApp.services', [])
         $http.post('http://localhost:8880/crearOrden', {
           order: operation.orderId,
           operation: operation.actividad,
-          title:
+          title: operation.title
         }).then(function (response) {
           this.updating();
         }.bind(this), function(err) {
