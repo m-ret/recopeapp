@@ -1,7 +1,8 @@
 var Hapi = require('hapi'),
     _ = require('lodash'),
     recopeFunciones = require('./recope-funciones.js'),
-    async = require('async');
+    async = require('async'),
+    moment = require('moment');
 
 // Create a server with a host and port
 var server = new Hapi.Server();
@@ -126,6 +127,12 @@ server.route({
     var url = 'os_RespCrearOrdenMantResp.wsdl';
     soap.createClient(url, function(err, client) {
       client.setSecurity(new soap.BasicAuthSecurity('USRCP_HW', 'usrcp2012'));
+      var startDateMilli = new Date(request.payload.start),
+          startDate = moment(startDateMilli).format("YYYY-MM-DD"),
+          startTime = moment(startDateMilli).format("HH:mm:ss"),
+          endDateMilli = new Date(request.payload.end),
+          endDate = moment(endDateMilli).format("YYYY-MM-DD"),
+          endTime = moment(endDateMilli).format("HH:mm:ss");
 
       var xml = {
         CONF_NO: 0,
@@ -140,14 +147,16 @@ server.route({
         ACT_WORK:'1',
         UN_WORK: 'H',
         UN_WORK_ISO: '',
-        EXEC_START_DATE: '2015-05-29',
-        EXEC_START_TIME: '13:00:00',
-        EXEC_FIN_DATE: '2015-05-29',
-        EXEC_FIN_TIME: '15:00:00',
+        EXEC_START_DATE: startDate,
+        EXEC_START_TIME: startTime,
+        EXEC_FIN_DATE: endDate,
+        EXEC_FIN_TIME: endTime,
         ACT_TYPE: '',
         CALC_MOTIVE: '',
         ACT_WORK_2:''
       };
+
+      console.log(xml);
 
       client.os_RespCrearOrdenMantResp({
         TIMETICKETS: {item: xml}
