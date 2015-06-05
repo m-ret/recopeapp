@@ -19,7 +19,7 @@ module.exports = {
         client.setSecurity(new soap.BasicAuthSecurity('USRCP_HW', 'usrcp2012'));
         client.os_ConsPtosMed({
           Equipos: {
-            Equipo: numeroEquipo
+            Equipo: [numeroEquipo, numeroEquipo]
           }
         }, function(err, result) {
           if (err) {
@@ -27,15 +27,16 @@ module.exports = {
           } else {
             var puntosMedida = [];
             _.each(result.DetPtosMedida, function(puntoMedida){
+              //console.log(puntoMedida);
               puntosMedida.push({
-                label: puntoMedida.PTTXT,
-                value: parseInt(puntoMedida.POINT, 10)
+                id: puntoMedida.POINT,
+                label: puntoMedida.PTTXT + ' (' + puntoMedida.ATNAM + ')',
+                value: puntoMedida.DECIM,
+                codgr: puntoMedida.CODGR,
+                unit: puntoMedida.MRNGU
               });
             });
-            setTimeout(function() {
-              console.log('enviando puntos de medida');
-              fullfill(puntosMedida);
-            }, 2000);
+            fullfill(puntosMedida);
           }
         });
       });

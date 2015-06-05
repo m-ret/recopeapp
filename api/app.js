@@ -295,6 +295,6 @@ server.route({
     });
   }
 });
-console.log('Levantando node...');
+console.log('Back-end Listo, escuchando en el puerto 8880');
 // Start the server
 server.start();
