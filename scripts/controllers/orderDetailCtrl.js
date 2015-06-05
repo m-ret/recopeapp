@@ -2,6 +2,8 @@ angular.module('RecopeApp.controllers')
   .controller('OrderDetailCtrl', function($rootScope, $scope, $stateParams, ServiceData) {
 
     $scope.operations = [];
+    $scope.cualitativos = ServiceData.cualitativos;
+    console.log($scope.cualitativos);
 
     $scope.statuses = {
       0: 'Sin comenzar',
@@ -74,7 +76,6 @@ angular.module('RecopeApp.controllers')
     }
 
     $scope.finishOperation = function(operation) {
-      console.log(operation);
       var operation = $scope.data.operations[$scope.data.operations.indexOf(operation)];
       operation.status = 3;
       ServiceData.finishOperation(operation);

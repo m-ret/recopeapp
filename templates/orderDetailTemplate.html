@@ -4,7 +4,7 @@
 <div class="module-container order-container">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-4 col-padding">
+      <div class="col-sm-3 col-padding">
         <div class="panel panel-default panel-edited">
           <div class="panel-heading headings">
             <h4>Orden</h4>
@@ -125,15 +125,34 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-3 col-padding">
+      <div class="col-sm-4 col-padding">
         <div class="panel panel-default panel-edited">
           <div class="panel-heading headings"><h4>Mediciones</h4></div>
           <div class="panel-body">
             <table class="table">
-              <tbody>
-                <tr ng-repeat="medicion in data.mediciones">
-                  <th>{{medicion.label}}</th>
-                  <td>{{medicion.value}}</td>
+              <tbody ng-repeat="medicion in data.mediciones">
+                <tr>
+                  <th>{{::medicion.label}}</th>
+                  <td>{{::medicion.value}}{{::medicion.unit}}</td>
+                </tr>
+                <!-- Cuantitativos -->
+                <tr ng-if="!medicion.codgr.length">
+                  <th>
+                    Lectura: <input ng-model="medicion.valorLectura" type="text" />
+                  </th>
+                </tr>
+                <!-- Cualitativos -->
+                <tr ng-if="medicion.codgr.length">
+                  <th>
+                    Lectura:
+                    <select ng-model="medicion.cualitativo">
+                      <option value="-1">Seleccionar</option>
+                      <option ng-repeat="cualit in cualitativos" value="{{::cualit.code}}">{{::cualit.texto}}</option>
+                    </select>
+                  </th>
+                </tr>
+                <tr>
+                  <th>Comentarios: <textarea ng-model="medicion.comentarios"></textarea></th>
                 </tr>
               </tbody>
             </table>

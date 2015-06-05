@@ -92,38 +92,6 @@ server.route({
   }
 });
 
-/*
- * Cuantitativos solo leen un valor
- *
- *
- * */
-server.route({
-  method: 'GET',
-  path: '/consCodVal',
-  handler: function(request, reply) {
-    var soap = require('soap');
-    var url = 'os_ConsCodVal.wsdl';
-    soap.createClient(url, function(err, client) {
-      client.setSecurity(new soap.BasicAuthSecurity('USRCP_HW', 'usrcp2012'));
-      client.os_ConsCodVal({
-        CodGrupos: {
-          CodGrupo: 'ZPM00001'
-        }
-      }, function(err, result) {
-        console.log(err);
-        console.log(result);
-        if (err) {
-          reply({
-            err:err
-          });
-        } else {
-          reply(result);
-        }
-      });
-    });
-  }
-});
-
 server.route({
   method: 'POST',
   path: '/crearOrden',
@@ -144,7 +112,7 @@ server.route({
         ORDERID: request.payload.order,
         OPERATION: request.payload.operation,
         SUB_OPER: '',
-        COMPLETE: '',
+        COMPLETE: 'X',
         DEV_REASON: '',
         CONF_TEXT: request.payload.title,
         PLANT: '',
@@ -269,7 +237,8 @@ server.route({
           });
         });
 
-        async.each(ordenes, function(item, callback) {
+        async.eachSeries(ordenes, function(item, callback) {
+          console.log('buscando Productos...');
           item.equipo = (item.equipo === {}) ? null : item.equipo;
           if (item.equipo) {
             recopeFunciones.buscarMedicion(item.equipo).then(function(mediciones) {
@@ -285,11 +254,18 @@ server.route({
             console.log(item);
             callback();
           }
-
         }, function(err) {
           //console.log(err);
-          console.timeEnd('Cargando Ordenes...');
-          reply(ordenes);
+
+          console.time('cualitativos');
+          recopeFunciones.buscarDatosCualitativos().then(function(cualitativos) {
+            console.log(cualitativos);
+            console.timeEnd('Cargando Ordenes...');
+            reply({ordenes: ordenes, cualitativos: cualitativos});
+          }, function(err) {
+            reply(ordenes);
+          });
+
         });
       });
     });

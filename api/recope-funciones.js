@@ -19,7 +19,7 @@ module.exports = {
         client.setSecurity(new soap.BasicAuthSecurity('USRCP_HW', 'usrcp2012'));
         client.os_ConsPtosMed({
           Equipos: {
-            Equipo: [numeroEquipo, numeroEquipo]
+            Equipo: numeroEquipo
           }
         }, function(err, result) {
           if (err) {
@@ -30,14 +30,42 @@ module.exports = {
               //console.log(puntoMedida);
               puntosMedida.push({
                 id: puntoMedida.POINT,
-                label: puntoMedida.PTTXT + ' (' + puntoMedida.ATNAM + ')',
+                label: puntoMedida.PTTXT,
                 value: puntoMedida.DECIM,
                 codgr: puntoMedida.CODGR,
-                unit: puntoMedida.MRNGU
+                unit: puntoMedida.MRNGU,
+                unitDesc: puntoMedida.ATNAM
               });
             });
             fullfill(puntosMedida);
           }
+        });
+      });
+    });
+  },
+  buscarDatosCualitativos: function() {
+    return new Promise(function(fullfill, reject) {
+      var soap = require('soap');
+      var url = 'os_ConsCodVal.wsdl';
+      soap.createClient(url, function(err, client) {
+        client.setSecurity(new soap.BasicAuthSecurity('USRCP_HW', 'usrcp2012'));
+        client.os_ConsCodVal({
+          CodGrupos: {
+            CodGrupo: 'ZPM00001'
+          }
+        }, function(err, datosCualitativos) {
+          if (err) {
+            reject({
+              err:err
+            });
+          }
+          console.log(datosCualitativos);
+          fullfill(_.map(datosCualitativos.DetCodVal, function(datoCualitativo) {
+            return {
+              code: datoCualitativo.CODE,
+              texto: datoCualitativo.KURZTEXTCD
+            }
+          }));
         });
       });
     });
