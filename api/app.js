@@ -49,8 +49,6 @@ server.route({
         ACT_WORK_2:''
       };
 
-      console.log(xml);
-
       client.os_RespCrearOrdenMantResp({
         TIMETICKETS: {item: xml}
       }, function(err, result) {
@@ -60,9 +58,21 @@ server.route({
           reply({
             err:err
           });
-        } else {
-          reply(result);
         }
+        async.eachSeries(request.payload.mediciones, function(medicion, callback){
+          recopeFunciones
+            .crearMedicion(_.assign(medicion, {orderId: request.payload.order}))
+            .then(function(result) {
+              console.log(result);
+              callback();
+            }, function(err) {
+              //console.log(err);
+              callback();
+            });
+        }, function(err) {
+          console.log('finalizado guardar mediciones');
+        });
+        reply(result);
       });
     });
   }

@@ -77,6 +77,7 @@ angular.module('RecopeApp.controllers')
 
     $scope.finishOperation = function(operation) {
       var operation = $scope.data.operations[$scope.data.operations.indexOf(operation)];
+      operation.mediciones = $scope.data.mediciones;
       operation.status = 3;
       ServiceData.finishOperation(operation);
     }

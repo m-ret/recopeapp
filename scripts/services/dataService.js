@@ -8,6 +8,7 @@ angular.module('RecopeApp.services', [])
       syncro: syncro,
       updating: updating,
       finishOperation: function(operation) {
+        console.log(operation);
         $http.post('http://localhost:8880/crearOrden', {
           order: operation.orderId,
           operation: operation.actividad,
@@ -27,7 +28,7 @@ angular.module('RecopeApp.services', [])
 
     function syncro() {
       console.time('ordenes');
-      return $http.get('http://localhost:8880/ordenes').then(function (response) {
+      return $http.get('http://localhost:8880/ordenes', {timeout: 120 * 1000}).then(function (response) {
         $window.localStorage.setItem('lastUpdate', Date.now());
         $window.localStorage.setItem('appData', JSON.stringify(response.data.ordenes));
         $window.localStorage.setItem('cualitativos', JSON.stringify(response.data.cualitativos));
