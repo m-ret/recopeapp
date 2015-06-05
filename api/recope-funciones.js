@@ -61,11 +61,11 @@ module.exports = {
           READER: '',
           ORIGIN_INDICATOR: '',
           READING_AFTER_ACTION: '',
-          RECORDED_VALUE: medicion.valorLectura, //los valores medido CUANTITATIVO
-          RECORDED_UNIT: medicion.unit,   //horas en este caso esto viene del equipo CUANTITATIVO
+          RECORDED_VALUE: medicion.valorLectura || '', //los valores medido CUANTITATIVO
+          RECORDED_UNIT: (medicion.unit === {}) ? '' : medicion.unit,   //horas en este caso esto viene del equipo CUANTITATIVO
           DIFFERENCE_READING: '',
           CODE_CATALOGUE: '1', //CODE CATALOGUE SIEMPRE EN UNO CUALITATIVO
-          CODE_GROUP: (medicion.codgr === {}) ? null : medicion.codgr, //ZPM00001 SI Y SOLO SI CUALITATIVO
+          CODE_GROUP: (medicion.codgr === {}) ? '' : medicion.codgr, //ZPM00001 SI Y SOLO SI CUALITATIVO
           VALUATION_CODE: medicion.cualitativo, // ESTE ES EL CODIGO DEL DROPDOWN
           CODE_VERSION: '',
           USER_DATA: '',
