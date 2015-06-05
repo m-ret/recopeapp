@@ -24,7 +24,10 @@ module.exports = {
                 value: parseInt(puntoMedida.POINT, 10)
               });
             });
-            fullfill(puntosMedida);
+            setTimeout(function() {
+              console.log('enviando puntos de medida');
+              fullfill(puntosMedida);
+            }, 2000);
           }
         });
       });

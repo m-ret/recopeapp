@@ -35,7 +35,7 @@ server.route({
           RECORDED_VALUE: '10',
           RECORDED_UNIT: 'H',
           DIFFERENCE_READING: '',
-          CODE_CATALOGUE: '',
+          CODE_CATALOGUE: '1',
           CODE_GROUP: '',
           VALUATION_CODE: '',
           CODE_VERSION: '',
@@ -188,7 +188,7 @@ server.route({
       client.os_OrderGetDetailResp({
         PLANT: '6000',
         PLANGROUP: 'E10',
-        START_DATE: '2015-01-04'
+        START_DATE: '2014-11-26'
       }, function(err, result) {
         var ordenes = [],
             operaciones = [];
@@ -264,18 +264,23 @@ server.route({
           });
         });
 
-        var i = 0;
         async.each(ordenes, function(item, callback) {
-          recopeFunciones.buscarMedicion(item.equipo.trim()).then(function(mediciones) {
-            i++;
-            item.mediciones = mediciones;
-            console.log(i);
+          item.equipo = (item.equipo === {}) ? null : item.equipo;
+          if (item.equipo) {
+            recopeFunciones.buscarMedicion(item.equipo).then(function(mediciones) {
+              console.log(mediciones);
+              item.mediciones = mediciones;
+              callback();
+            }, function(err) {
+              //console.log(JSON.stringify(err.root));
+              console.log('error buscando Equipo con '+ item.equipo);
+              callback();
+            });
+          } else {
+            console.log(item);
             callback();
-          }, function(err) {
-            //console.log(JSON.stringify(err.root));
-            console.log('error buscando Equipo con '+ item.equipo.trim());
-            callback();
-          });
+          }
+
         }, function(err) {
           //console.log(err);
           console.timeEnd('Cargando Ordenes...');
