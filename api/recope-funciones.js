@@ -51,7 +51,7 @@ module.exports = {
       soap.createClient(url, function(err, client) {
         client.setSecurity(new soap.BasicAuthSecurity('USRCP_HW', 'usrcp2012'));
         var documentoMedicion = {
-          ORDERID: medicion.id,
+          ORDERID: medicion.orderId,
           POS_ID: '',
           MEASUREMENT_POINT: medicion.id, //punto de medida, lo da el ws de consulta EQUIPO, es la liga el id
           SECONDARY_INDEX: '',
