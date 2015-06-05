@@ -8,7 +8,6 @@ angular.module('RecopeApp.services', [])
       syncro: syncro,
       updating: updating,
       finishOperation: function(operation) {
-        console.log(operation);
         $http.post('http://localhost:8880/crearOrden', {
           order: operation.orderId,
           operation: operation.actividad,

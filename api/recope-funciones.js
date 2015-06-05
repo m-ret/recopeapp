@@ -43,6 +43,53 @@ module.exports = {
       });
     });
   },
+  crearMedicion: function(params) {
+    var soap = require('soap');
+    var url = 'os_RespDocMed.wsdl';
+    soap.createClient(url, function(err, client) {
+      client.setSecurity(new soap.BasicAuthSecurity('USRCP_HW', 'usrcp2012'));
+      client.os_RespDocMed({
+        DetalleDocuMed: {
+          ORDERID: '110000000202',
+          POS_ID: '',
+          MEASUREMENT_POINT: '250', //punto de medida, lo da el ws de consulta EQUIPO, es la liga el id
+          SECONDARY_INDEX: '',
+          READING_DATE: moment().format('YYYYMMDD'), //hora de que se esta tomando la medicion
+          READING_TIME: moment().format('HHmmss'), //hora de que se esta tomando la medicion
+          SHORT_TEXT: 'TEST FROM SOAP BHL', //esto se escribe como sugerencia del dato
+          READER: '',
+          ORIGIN_INDICATOR: '',
+          READING_AFTER_ACTION: '',
+          RECORDED_VALUE: '10', //los valores medido CUANTITATIVO
+          RECORDED_UNIT: 'H',   //horas en este caso esto viene del equipo CUANTITATIVO
+          DIFFERENCE_READING: '',
+          CODE_CATALOGUE: '1', //CODE CATALOGUE SIEMPRE EN UNO CUALITATIVO
+          CODE_GROUP: '', //ZPM00001 SI Y SOLO SI CUALITATIVO
+          VALUATION_CODE: '', // ESTE ES EL CODIGO DEL DROPDOWN
+          CODE_VERSION: '',
+          USER_DATA: '',
+          CHECK_CUSTOM_DUPREC: '',
+          WITH_DIALOG_SCREEN: '',
+          PREPARE_UPDATE: '',
+          COMMIT_WORK: 'X', //params del abap
+          WAIT_AFTER_COMMIT: 'X', //va a continuar la ejecucion hasta que el codigo sea confirmado
+          CREATE_NOTIFICATION: '',
+          NOTIFICATION_TYPE: '',
+          NOTIFICATION_PRIO: ''
+        }
+      }, function(err, result) {
+        console.log(err);
+        console.log(result);
+        if (err) {
+          reply({
+            err:err
+          });
+        } else {
+          reply(result);
+        }
+      });
+    });
+  },
   buscarDatosCualitativos: function() {
     return new Promise(function(fullfill, reject) {
       var soap = require('soap');
