@@ -1,0 +1,10 @@
+<div class="popover" tabindex="-1">
+	<div class="arrow"></div>
+	<h5 class="popover-title" ng-bind-html="title" ng-show="title"></h5>
+	<div class="popover-content" style="text-align:center;">
+		<p>¿Está Seguro?</p>
+			<button type="button" class="btn btn-success btn-sm" ng-click="finishOperation(operation);$hide()">Enviar</button>
+			<button type="button" class="btn btn-danger btn-sm" ng-click="$hide()">Cancelar</button>
+	</div>
+</div>
+
