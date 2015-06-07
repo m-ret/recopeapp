@@ -2,6 +2,7 @@ angular
   .module('RecopeApp', [
     'ui.router',
     'ngAnimate',
+    'mgcrea.ngStrap',
     'LocalStorageModule',
     'RecopeApp.controllers',
     'RecopeApp.services',
