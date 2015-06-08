@@ -27,6 +27,15 @@ body {
   padding: 0;
 }
 
+.alert-container {
+  position: fixed;
+  right: 14%;
+  text-align: center;
+  top: 40px;
+  margin: 0 auto;
+  width: 230px;
+}
+
 button[disabled] {
   opacity : 0.5;
 }

@@ -1,5 +1,5 @@
 angular.module('RecopeApp.controllers', [])
-  .controller('MainCtrl', function($scope, $window, ServiceData) {
+  .controller('MainCtrl', function($scope, $window, $alert, $timeout, ServiceData) {
 
     $scope.dateFormat = 'dd/MM/yyyy, hh:mm a';
     $scope.getLastUpdate = ServiceData.getLastUpdate;
@@ -11,6 +11,14 @@ angular.module('RecopeApp.controllers', [])
     $scope.syncro = function() {
       $scope.idle = true;
       ServiceData.syncro().then(function () {
+        var syncroAlert = $alert({
+          animation: 'fx-bounce-right',
+          content: 'Sincronización exitosa.',
+          container: '.alert-container',
+          type: 'info',
+          duration: 2,
+          show: true
+        });
         $scope.idle = false;
         $scope.showSync = false;
         $scope.getLastUpdate = Date.now();
