@@ -11,113 +11,6 @@ server.connection({
   port: 8880,
   routes: { cors: true }
 });
-// Add the route
-server.route({
-  method: 'GET',
-  path: '/respDocMed',
-  handler: function(request, reply) {
-    var soap = require('soap');
-    var url = 'os_RespDocMed.wsdl';
-    soap.createClient(url, function(err, client) {
-      client.setSecurity(new soap.BasicAuthSecurity('USRCP_HW', 'usrcp2012'));
-      client.os_RespDocMed({
-        DetalleDocuMed: {
-          ORDERID: '110000000202',
-          POS_ID: '',
-          MEASUREMENT_POINT: '250',
-          SECONDARY_INDEX: '',
-          READING_DATE: '20150531',
-          READING_TIME: '090000',
-          SHORT_TEXT: 'TEST FROM SOAP BHL',
-          READER: '',
-          ORIGIN_INDICATOR: '',
-          READING_AFTER_ACTION: '',
-          RECORDED_VALUE: '10',
-          RECORDED_UNIT: 'H',
-          DIFFERENCE_READING: '',
-          CODE_CATALOGUE: '',
-          CODE_GROUP: '',
-          VALUATION_CODE: '',
-          CODE_VERSION: '',
-          USER_DATA: '',
-          CHECK_CUSTOM_DUPREC: '',
-          WITH_DIALOG_SCREEN: '',
-          PREPARE_UPDATE: '',
-          COMMIT_WORK: 'X',
-          WAIT_AFTER_COMMIT: 'X',
-          CREATE_NOTIFICATION: '',
-          NOTIFICATION_TYPE: '',
-          NOTIFICATION_PRIO: ''
-        }
-      }, function(err, result) {
-        console.log(err);
-        console.log(result);
-        if (err) {
-          reply({
-            err:err
-          });
-        } else {
-          reply(result);
-        }
-      });
-    });
-  }
-});
-
-// Add the route
-server.route({
-  method: 'GET',
-  path: '/consPtosMed/{equipo}',
-  handler: function(request, reply) {
-    var soap = require('soap');
-    var url = 'os_ConsPtosMed.wsdl';
-    soap.createClient(url, function(err, client) {
-      client.setSecurity(new soap.BasicAuthSecurity('USRCP_HW', 'usrcp2012'));
-      client.os_ConsPtosMed({
-        Equipos: {
-          Equipo: request.params.equipo
-        }
-      }, function(err, result) {
-        console.log(err);
-        console.log(result);
-        if (err) {
-          reply({
-            err:err
-          });
-        } else {
-          reply(result);
-        }
-      });
-    });
-  }
-});
-
-server.route({
-  method: 'GET',
-  path: '/consCodVal',
-  handler: function(request, reply) {
-    var soap = require('soap');
-    var url = 'os_ConsCodVal.wsdl';
-    soap.createClient(url, function(err, client) {
-      client.setSecurity(new soap.BasicAuthSecurity('USRCP_HW', 'usrcp2012'));
-      client.os_ConsCodVal({
-        CodGrupos: {
-          CodGrupo: 'ZPM00001'
-        }
-      }, function(err, result) {
-        console.log(err);
-        console.log(result);
-        if (err) {
-          reply({
-            err:err
-          });
-        } else {
-          reply(result);
-        }
-      });
-    });
-  }
-});
 
 server.route({
   method: 'POST',
@@ -139,7 +32,7 @@ server.route({
         ORDERID: request.payload.order,
         OPERATION: request.payload.operation,
         SUB_OPER: '',
-        COMPLETE: '',
+        COMPLETE: 'X',
         DEV_REASON: '',
         CONF_TEXT: request.payload.title,
         PLANT: '',
@@ -156,8 +49,6 @@ server.route({
         ACT_WORK_2:''
       };
 
-      console.log(xml);
-
       client.os_RespCrearOrdenMantResp({
         TIMETICKETS: {item: xml}
       }, function(err, result) {
@@ -167,9 +58,21 @@ server.route({
           reply({
             err:err
           });
-        } else {
-          reply(result);
         }
+        async.eachSeries(request.payload.mediciones, function(medicion, callback){
+          recopeFunciones
+            .crearMedicion(_.assign(medicion, {orderId: request.payload.order}))
+            .then(function(result) {
+              console.log(result);
+              callback();
+            }, function(err) {
+              //console.log(err);
+              callback();
+            });
+        }, function(err) {
+          console.log('finalizado guardar mediciones');
+        });
+        reply(result);
       });
     });
   }
@@ -188,7 +91,7 @@ server.route({
       client.os_OrderGetDetailResp({
         PLANT: '6000',
         PLANGROUP: 'E10',
-        START_DATE: '2015-01-04'
+        START_DATE: '2014-11-26'
       }, function(err, result) {
         var ordenes = [],
             operaciones = [];
@@ -264,27 +167,40 @@ server.route({
           });
         });
 
-        var i = 0;
-        async.each(ordenes, function(item, callback) {
-          recopeFunciones.buscarMedicion(item.equipo.trim()).then(function(mediciones) {
-            i++;
-            item.mediciones = mediciones;
-            console.log(i);
+        async.eachSeries(ordenes, function(item, callback) {
+          console.log('buscando Productos...');
+          item.equipo = (item.equipo === {}) ? null : item.equipo;
+          if (item.equipo) {
+            recopeFunciones.buscarMedicion(item.equipo).then(function(mediciones) {
+              console.log(mediciones);
+              item.mediciones = mediciones;
+              callback();
+            }, function(err) {
+              //console.log(JSON.stringify(err.root));
+              console.log('error buscando Equipo con '+ item.equipo);
+              callback();
+            });
+          } else {
+            console.log(item);
             callback();
-          }, function(err) {
-            //console.log(JSON.stringify(err.root));
-            console.log('error buscando Equipo con '+ item.equipo.trim());
-            callback();
-          });
+          }
         }, function(err) {
           //console.log(err);
-          console.timeEnd('Cargando Ordenes...');
-          reply(ordenes);
+
+          console.time('cualitativos');
+          recopeFunciones.buscarDatosCualitativos().then(function(cualitativos) {
+            console.log(cualitativos);
+            console.timeEnd('Cargando Ordenes...');
+            reply({ordenes: ordenes, cualitativos: cualitativos});
+          }, function(err) {
+            reply(ordenes);
+          });
+
         });
       });
     });
   }
 });
-console.log('Levantando node...');
+console.log('Back-end Listo, escuchando en el puerto 8880');
 // Start the server
 server.start();
