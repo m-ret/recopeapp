@@ -78,12 +78,14 @@
 
 
                   <div class="col-sm-12 col-xs-12">
-                    <button class="btn btn-default btn-block" ng-click="operations.push({})">Agregar especificación</button>
+                    <button class="btn btn-default btn-block"
+                            ng-click="operations.push([$index])">Agregar especificación
+                    </button>
 
 
                     <div ng-repeat="operation in operations">
                       <div class="padding-top">
-                        <input ng-model="operations[$index].detailText" type="text"
+                        <input ng-model="operations.detailText" type="text"
                                class="form-control" placeholder="Especificación">
                       </div>
 

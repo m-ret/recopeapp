@@ -3,6 +3,12 @@ angular.module('RecopeApp.controllers')
 
     $scope.operations = [];
 
+    $scope.addNewItem = function(index) {
+      scope.operations.push({
+        index: index
+      })
+    }
+
     $scope.statuses = {
       0: 'Sin comenzar',
       1: 'Iniciada',
