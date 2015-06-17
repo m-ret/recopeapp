@@ -2,15 +2,15 @@ angular.module('RecopeApp.controllers')
   .controller('LoginCtrl', function($rootScope, $scope, $stateParams, LoginService) {
 
     $scope.params = {
-      username: '',
+      user: '',
       password: '',
       planta: '',
-      planGroup: ''
+      plangroup: ''
     };
 
     $scope.login = function() {
-      LoginService.login($scope.params).then(function() {
-        console.log('credentials', $scope.params);
+      LoginService.login($scope.params).then(function(params) {
+        console.log('credentials', $scope.params, params);
       })
     };
 

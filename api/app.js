@@ -82,11 +82,11 @@ server.route({
   method: 'POST',
   path: '/login',
   handler: function(request, reply) {
-    USER: 'USRCP_HW'
-    PWD: 'usrcp2012'
-    PLANTA: '6000'
-    PLANGROUP: 'E10'
-    START_DATE: '2014-11-26'
+    USER: request.payload.user,
+    PWD: request.payload.password,
+    PLANTA: request.payload.planta,
+    PLANGROUP: request.payload.plantgroup,
+    START_DATE: request.payload.startDate
   }
 });
 
