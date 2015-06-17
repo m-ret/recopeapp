@@ -79,6 +79,18 @@ server.route({
 });
 
 server.route({
+  method: 'POST',
+  path: '/login',
+  handler: function(request, reply) {
+    USER: 'USRCP_HW'
+    PWD: 'usrcp2012'
+    PLANTA: '6000'
+    PLANGROUP: 'E10'
+    START_DATE: '2014-11-26'
+  }
+});
+
+server.route({
   method: 'GET',
   path:'/ordenes',
   handler: function(request, reply) {

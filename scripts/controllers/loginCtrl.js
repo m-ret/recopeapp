@@ -1,7 +1,7 @@
 angular.module('RecopeApp.controllers')
-  .controller('LoginCtrl', function($rootScope, $scope, $stateParams) {
+  .controller('LoginCtrl', function($rootScope, $scope, $stateParams, LoginService) {
 
-    $scope.credentials = {
+    $scope.params = {
       username: '',
       password: '',
       planta: '',
@@ -9,7 +9,9 @@ angular.module('RecopeApp.controllers')
     };
 
     $scope.login = function() {
-      console.log('credentials', $scope.credentials);
+      LoginService.login($scope.params).then(function() {
+        console.log('credentials', $scope.params);
+      })
     };
 
   });
