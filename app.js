@@ -14,7 +14,7 @@ angular
   $stateProvider
     .state('login', {
         url: '/',
-        controller: 'loginCtrl',
+        controller: 'LoginCtrl',
         templateUrl: 'templates/login.html'
       })
     .state('orders', {
