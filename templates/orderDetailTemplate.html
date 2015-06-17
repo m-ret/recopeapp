@@ -49,9 +49,11 @@
                       </button>
                     </div>
                     <div class="col-sm-10">
-                      <button confirmed-click="finishOperation(operation)"
-                              ng-disabled="operation.playing || !operation.end"
-                              ng-confirm-click="¿Seguro que desea notificar esta operación?"
+                      <button ng-disabled="operation.playing || !operation.end"
+                              title="Enviar notificación" data-placement="bottom"
+                              data-template="templates/finalNotifiactionPopOver.html"
+                              data-auto-close="1"
+                              bs-popover=""
                               class="btn btn-block btn-danger btn-sm">Notificación final
                       </button>
                     </div>

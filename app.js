@@ -2,6 +2,7 @@ angular
   .module('RecopeApp', [
     'ui.router',
     'ngAnimate',
+    'mgcrea.ngStrap',
     'LocalStorageModule',
     'RecopeApp.controllers',
     'RecopeApp.services',
@@ -11,8 +12,13 @@ angular
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+    .state('login', {
+        url: '/',
+        controller: 'loginCtrl',
+        templateUrl: 'templates/login.html'
+      })
     .state('orders', {
-      url: '/',
+      url: '/orders',
       controller: 'OrdersCtrl as ordersCtrl',
       templateUrl: 'templates/ordersData.html'
     })
