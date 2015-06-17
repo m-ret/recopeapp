@@ -9,8 +9,7 @@ angular.module('RecopeApp.controllers')
     };
 
     $scope.login = function() {
-      //console.log('credentials', $scope.credentials);
-      console.log('hey ho');
+      console.log('credentials', $scope.credentials);
     };
 
   });
