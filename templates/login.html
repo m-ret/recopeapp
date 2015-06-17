@@ -1,22 +1,22 @@
 <div class="container login">
   <div class="row">
     <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-      <div class="form-login">
+      <form class="form-login" ng-submit="login()">
         <h4>Bienvenido</h4>
-        <input type="text" id="userName" class="form-control input-sm chat-input" placeholder="Usuario" />
+        <input ng-model="credentials.username" type="text" id="userName" class="form-control input-sm chat-input" placeholder="Usuario">
         </br>
-        <input type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="Contraseña" />
+        <input ng-model="credentials.password" type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="Contraseña">
         </br>
-        <input type="text" class="form-control input-sm chat-input" placeholder="Planta" />
+        <input ng-model="credentials.planta" type="text" class="form-control input-sm chat-input" placeholder="Planta">
         </br>
-        <input type="text" class="form-control input-sm chat-input" placeholder="PlanGroup" />
+        <input ng-model="credentials.planGroup" type="text" class="form-control input-sm chat-input" placeholder="PlanGroup">
         </br>
         <div class="wrapper">
           <span class="group-btn">     
-            <a href="#" class="btn btn-primary btn-md">Entrar <i class="fa fa-sign-in"></i></a>
+            <button class="btn btn-primary btn-md" type="submit">Entrar <i class="fa fa-sign-in"></i></button>
           </span>
         </div>
-      </div>      
+      </form>      
     </div>
   </div>
 </div>
