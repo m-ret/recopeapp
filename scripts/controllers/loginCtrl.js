@@ -8,8 +8,9 @@ angular.module('RecopeApp.controllers')
       planGroup: ''
     };
 
-    $scope.syncro = function() {
-      console.log('credentials', $scope.credentials);
+    $scope.login = function() {
+      //console.log('credentials', $scope.credentials);
+      console.log('hey ho');
     };
 
   });
