@@ -4,7 +4,7 @@ angular.module('RecopeApp.services')
     var defer = $q.defer();
 
     return {
-      login: function(params) {
+      login: function() {
         $http.post('http://localhost:8000/login', {
           user: 'USRCP_HW',
           password: 'usrcp2012',
@@ -13,6 +13,7 @@ angular.module('RecopeApp.services')
           startDate: '2014-11-26'
         }).success(function(data) {
           console.log(data);
+          return data;
         }).error(function(data, status){
           console.log(data, status);
           defer.reject(data);
