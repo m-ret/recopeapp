@@ -10,8 +10,8 @@ angular.module('RecopeApp.controllers')
 
     $scope.login = function(data) {
       console.log(data);
-      // LoginService.login(data).then(function(params) {
-      //   console.log('credentials', $scope.params, params);
+      // LoginService.login(data).then(function() {
+      //   console.log(data);
       // })
     };
 
