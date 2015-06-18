@@ -8,10 +8,11 @@ angular.module('RecopeApp.controllers')
       plangroup: ''
     };
 
-    $scope.login = function() {
-      LoginService.login($scope.params).then(function(params) {
-        console.log('credentials', $scope.params, params);
-      })
+    $scope.login = function(data) {
+      console.log(data);
+      // LoginService.login(data).then(function(params) {
+      //   console.log('credentials', $scope.params, params);
+      // })
     };
 
   });
