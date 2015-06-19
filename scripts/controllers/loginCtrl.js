@@ -1,10 +1,10 @@
 angular.module('RecopeApp.controllers')
   .controller('LoginCtrl', function($rootScope, $scope, $stateParams, LoginService) {
 
-    $scope.login = function (data) {
-        console.log(data);
+    $scope.login = function(data) {
+      console.log(data);
     };
 
-    LoginService.login().success($scope.login)
+    LoginService.login().then($scope.login);
 
   });

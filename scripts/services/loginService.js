@@ -1,6 +1,8 @@
 angular.module('RecopeApp.services')
   .factory('LoginService', function($http, $q) {
 
+    var defer = $q.defer();
+
     return {
       login: function () {
         return $http.post('http://localhost:8000/login', {
@@ -11,9 +13,12 @@ angular.module('RecopeApp.services')
           startDate: '2014-11-26'
         }).success(function (data) {
           console.log(data);
+          defer.resolve(data);
         }).error(function (data, status) {
           console.log(data, status);
+          defer.reject(data);
         });
+        return defer.promise;
       }
     }
   });
