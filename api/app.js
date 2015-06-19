@@ -85,7 +85,7 @@ server.route({
     USER: request.payload.user,
     PWD: request.payload.password,
     PLANTA: request.payload.planta,
-    PLANGROUP: request.payload.plantgroup,
+    PLANROUP: request.payload.plantgroup,
     START_DATE: request.payload.startDate
   }
 });
