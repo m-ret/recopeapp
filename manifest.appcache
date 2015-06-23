@@ -1,0 +1,39 @@
+CACHE MANIFEST
+index.html
+app.js
+templates/login.html
+templates/orderDetailTemplate.html
+templates/ordersData.html
+styles/orderDetailTemplate.css
+styles/ordersData.css
+scripts/controllers/loginCtrl.js
+scripts/controllers/mainCtrl.js
+scripts/controllers/orderDetailCtrl.js
+scripts/controllers/ordersCtrl.js
+scripts/services/dataService.js
+scripts/services/loginService.js
+scripts/services/orderService.js
+scripts/filters/filteringStatus.js
+scripts/directives/confirmClick.js
+assets/fonts/fontawesome-webfont.woff2
+assets/fonts/fontawesome-webfont.svg
+assets/fonts/fontawesome-webfont.ttf
+assets/fonts/fontawesome-webfont.woff
+assets/fonts/fontawesome-webfont.eot
+assets/fonts/FontAwesome.otf
+
+
+
+
+# Resources that require the user to be online.
+NETWORK:
+*
+
+
+FALLBACK:
+/assets/fonts/fontawesome-webfont.woff2 assets/fonts/fontawesome-webfont.woff2
+/assets/fonts/fontawesome-webfont.svg assets/fonts/fontawesome-webfont.svg
+/assets/fonts/fontawesome-webfont.ttf assets/fonts/fontawesome-webfont.ttf
+/assets/fonts/fontawesome-webfont.woff assets/fonts/fontawesome-webfont.woff
+/assets/fonts/fontawesome-webfont.eot assets/fonts/fontawesome-webfont.eot
+/assets/fonts/FontAwesome.otf assets/fonts/FontAwesome.otf
